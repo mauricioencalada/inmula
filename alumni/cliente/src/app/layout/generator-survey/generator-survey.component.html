@@ -1,0 +1,215 @@
+<br><br><br>
+<section class="projects-section bg-light" align="center">
+  <div class="row justify-content-center align-self-center">
+    <div class="barra col-lg-12">
+      <p align="center">ADMINISTRADOR</p>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-xs-6">
+      <div class="agregar">
+        <button class="btn" onclick="open(event, 'case1')" ><i class="fas fa-plus"></i></button>
+      </div>
+      <div class="txt">
+        <p> CREAR ENCUESTA</p>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-xs-6">
+      <div class="agregar">
+        <button class="btn" onclick="open(event, 'case2')"><i class="fas fa-pencil-alt"></i></button>
+      </div>
+      <div class="txt">
+        <p> ACTUALIZAR</p>
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+  <br>
+  <br>
+  <div  >
+  <div align="center">
+    <div class="row justify-content-center align-self-center">
+      <div class="txt col-lg-2">
+        <p align="left">NOMBRE:</p>
+      </div>
+      <br>
+      <div class="col-lg-4">
+        <input type="text" id="pregunta"
+          class="border border-success border-right-0 border-left-0 border-top-0 border-bottom-6 col-lg-12">
+      </div>
+      <div class="txt col-lg-2">
+        <p align="left"> DESCRIPCION:</p>
+      </div>
+      <div class="col-lg-4">
+        <input type="text"
+          class="border border-success border-right-0 border-left-0 border-top-0 border-bottom-6 col-lg-12">
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="row justify-content-center align-self-center">
+      <div class="txt col-lg-2">
+        <p align="left">OBJETIVO:</p>
+      </div>
+      <br>
+      <div class="col-lg-4">
+        <input type="text" id="pregunta"
+          class="border border-success border-right-0 border-left-0 border-top-0 border-bottom-6 col-lg-12">
+      </div>
+      <div class="txt col-lg-2">
+        <p align="left">ESTADO:</p>
+      </div>
+      <div class="col-lg-4">
+        <input type="text"
+          class="border border-success border-right-0 border-left-0 border-top-0 border-bottom-6 col-lg-12">
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+<!--INICIO Y FIN DE LA ENCUESTA-->
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-xs-6">
+      <div class="txt">
+        <p> INICIO ENCUESTA:</p>
+      </div>
+    
+      <div class="agregar">
+        <input type="date" class="form-control border border-success form-control" name="inicioPublicacion" (change)="calculateFinishDate()"
+          id="editInicioPublicacion">
+      </div>
+
+    </div>
+    <div class="col-sm-6 col-md-6 col-xs-6">
+      <div class="txt">
+        <p> FIN ENCUESTA:</p>
+      </div>
+      <div class="agregar">
+        <input type="date" class=" form-control border border-success form-control" name="editFinPublicacion" readonly id="editFinPublicacion">
+      </div>
+    </div>
+  </div>
+  <br><br>
+    <div class="agregar" align="center">
+        <button class="btn1 ">CREAR</button>
+      </div>
+<!--
+  <br>
+  <br>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-6 col-xs-6">
+      <div class="txt">
+        <p> TIPO DE ENCUESTA:</p>
+      </div>
+      <div class="agregar">
+        <select class="form-control border border-success" id="sel1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+
+    </div>
+    <div class="col-sm-6 col-md-6 col-xs-6">
+      <div class="txt">
+        <p> CARRERA:</p>
+      </div>
+      <div class="agregar">
+        <select class="form-control border border-success" id="sel1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+-->
+
+  <br> <br> <br> <br>
+
+
+  <div class="row justify-content-center align-self-center">
+      <div class="txt col-lg-2">
+        <p align="left">TIPO PREGUNTA:</p>
+      </div>
+      <div class="col-lg-4">
+          <select class="form-control border border-success" id="sel1">
+              <option>SELECCIONE....</option> 
+              <option>CALIFICACAR</option>
+              <option>SELECIONAR</option>
+              <option>ESCRIBIR</option>
+            </select>
+      </div>
+      <div class="txt col-lg-2">
+          <p align="left">PREGUNTA:</p>
+        </div>
+        <br>
+        <div class="col-lg-4">
+          <input type="text" id="pregunta"
+            class="border border-success border-right-0 border-left-0 border-top-0 border-bottom-6 col-lg-12">
+        </div>
+    </div>
+    <br><br>
+    <div class="agregar" align="center">
+        <button class="btn1 ">CREAR</button>
+      </div>
+ 
+  <br>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div >
+  <div class="row justify-content-center align-self-center">
+    <p-table [value]="add">
+      <ng-template pTemplate="header">
+        <tr class="color">
+          <th colspan="1">#</th>
+          <th colspan="5">Pregunta</th>
+          <th colspan="5">Tipo</th>
+          <th colspan="5">Edita/Elimina</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-add>
+        <tr>
+          <td colspan="1">{{add.brand}}</td>
+          <td colspan="5">{{add.lastYearSale}}</td>
+          <td colspan="5">{{add.thisYearSale}}</td>
+          <td colspan="5">
+            <button class="seleccion">✏</button>
+            <button class="seleccion">🗑</button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="footer">
+      </ng-template>
+    </p-table>
+
+  </div>
+  <br>
+  <button class="btn1">GUARDAR</button>
+
+</div>
+<script>
+
+</script>

@@ -1,0 +1,1604 @@
+<section>
+  <ng-container *ngFor="let encuesta of encuestaArray; let i = index; last as lasted; first as firsted">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mx-auto">
+          <ng-container *ngFor="let encuestaPreguntaArray of encuestaPreguntas; let indice = index;">
+            <div class="card" *ngIf="verificar(indice)">
+              <div class="card-body text-center" *ngIf="validador == false">
+                <div class="colorBar col-lg-12"
+                     style="color: rgb(0, 0, 0);background-color: white; border-bottom: 9px solid gray;font-size: 100%  ">
+                  <h2>EMPLEABILIDAD</h2>
+                  <br>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+                  <h5>PRIMER EMPLEO: (Aquella actividad laboral que recibió una remuneración con beneficios de ley)
+                  </h5>
+                  <br>
+                </div>
+                <br>
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 25">
+                    <div class="colorBar col-lg-12"
+                         style="border-bottom: solid 5px #004523; background-color: #ffffff; color: rgb(0, 0, 0)">
+                      <h5>{{item.descripcion}}</h5>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let item of preguntas; let i = index;">
+                  <div class="row" *ngIf="item.id == 25">
+                    <br>
+                    <div class="col-sm-6 col-md-6 col-xs-6">
+                      <br>
+                      <label class="inp">Antes de graduarse de pregrado</label>
+                      <br>
+                      <input type="date" placeholder="12/12/2009" [(ngModel)]="res1" (change)="id1 = item.id">
+                    </div>
+                    <div class="fech col-sm-6 col-md-6 col-xs-6">
+                      <br>
+                      <label class="inp">Después de graduarse de pregrado</label>
+                      <br>
+                      <input type="date" placeholder="13/14/20010" [(ngModel)]="res2"
+                             (change)="id2 = item.id">
+                    </div>
+                  </div>
+                </ng-container>
+                <br>
+
+                <ng-container *ngFor="let item of preguntas; let i = index;">
+                  <ng-container *ngIf="item.id == 26">
+                    <div class="colorBar col-lg-12"
+                         style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                      <br>
+                      <h5>{{item.descripcion}}</h5>
+                      <br>
+                    </div>
+                    <div class="col-md-6 offset-md-3">
+                      <br>
+
+                      <select class="form-control" style="text-transform:uppercase;" [(ngModel)]="res3"
+                              (change)="id3 = item.id">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="0/6">Entre 0 y 6 meses</option>
+                        <option value="7/12">De 7 a 12 meses</option>
+                        <option value="+1">Más de 1 año</option>
+                      </select>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <br>
+                <br>
+
+                <br>
+                <ng-container *ngFor="let item of preguntas; let i = index;">
+                  <ng-container *ngIf="item.id == 27">
+                    <div class="colorBar col-lg-12"
+                         style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                      <br>
+                      <h5>{{item.descripcion}}</h5>
+                      <br>
+                    </div>
+                    <div class="wrap-input100 col-md-6 offset-md-3">
+                      <input type="number" placeholder="&nbsp;" name="work" [(ngModel)]="res4"
+                             (change)="id4 = item.id">
+                    </div>
+                    <!--title-->
+                    <div *ngIf="item.id == 27 && res4 >1">
+                      <br><br>
+                      <div class="colorBar col-lg-12"
+                           style="color: rgb(0, 0, 0);background-color: white; border: 1px solid gray">
+                        <h5>Detalle los últimos trabajos que ha tenido</h5>
+                      </div>
+                      <div class="row justify-content-around offset-md-9">
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target="#exampleModalCenter">
+                          Agregar nuevo
+                        </button>
+                      </div>
+
+                      <!--  Table -->
+                      <p-table [value]="add" [rows]="10" [paginator]="true" [pageLinks]="3"
+                               [rowsPerPageOptions]="[5,10,20]">
+                        <ng-template pTemplate="header">
+                          <tr>
+                            <th>Nombre de la empresa</th>
+                            <th>Cargo que ocupó</th>
+                            <th>Tiempo Permanencia</th>
+                            <th>Año Ingreso</th>
+                          </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-add>
+                          <tr>
+                            <td>{{add.brand}}</td>
+                            <td>{{add.lastYearSale}}</td>
+                            <td>{{add.thisYearSale}}</td>
+                            <td>
+                              <button>hola</button>
+                            </td>
+                          </tr>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+
+                        </ng-template>
+                      </p-table>
+                    </div>
+                    <!--  Table End -->
+                  </ng-container>
+                </ng-container>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="color: rgb(0, 0, 0);background-color: white; border: 1px solid gray; height: 50px;">
+                  <br>
+                  <h6>Situacion laboral Actual</h6>
+                  <br>
+                </div>
+                <br>
+                <ng-container *ngFor="let item of preguntas; let i = index;">
+                  <ng-container *ngIf="item.id == 32">
+                    <div class="colorBar col-lg-12"
+                         style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                      <br>
+                      <h5>{{item.descripcion}}</h5>
+                      <br>
+                    </div>
+                    <div class="col-md-6 offset-md-3"><br>
+                      <label class="control-label"><br>Seleccione</label>
+                      <select class="form-control" [(ngModel)]="res5" (change)="id5 = item.id"
+                              style="text-transform:uppercase;">
+                        <option>-- Seleccione --</option>
+                        <option value="SI">Sí</option>
+                        <option value="NO">No</option>
+                      </select>
+                    </div>
+                  </ng-container>
+                </ng-container>
+                <br>
+                <div *ngIf="res5 == 'SI'">
+                  <ng-container *ngFor="let item of preguntas; let i = index;">
+                    <div class="row">
+                      <div class="fech col-sm-5 col-md-5 col-xs-5" *ngIf="item.id == 33">
+                        <label>{{item.descripcion}}</label>
+                        <input type="number" placeholder="Años" min="1" max="20" [(ngModel)]="res6"
+                               (change)="id6 = item.id">
+                        <input type="number" placeholder="Meses" min="1" max="12" [(ngModel)]="res7"
+                               (change)="id7 = item.id">
+                      </div>
+                      <div class="fech col-sm-5 col-md-5 col-xs-5" *ngIf="item.id == 34">
+
+                        <label>{{item.descripcion}}</label>
+                        <br>
+                        <input type="date" [(ngModel)]="res8" (change)="id8 = item.id">
+                      </div>
+                    </div>
+                  </ng-container>
+                  <br><br>
+
+                  <div class="row newrow1 justify-content-start">
+                    <div class="form-group fech col-sm-6 col-md-6 col-xs-6">
+
+                      <ng-container *ngFor="let item of preguntas; let i = index;">
+                        <ng-container *ngIf="item.id == 673">
+                          <label class="control-label">{{item.descripcion}}</label>
+                          <br>
+                          <select class="form-control" name="select1"
+                                  (change)="id9 = item.id"
+                                  [(ngModel)]="res9"
+                                  style="text-transform:uppercase;">
+                            <option value="0">-- Seleccione --</option>
+                            <option value="CONTRATO/INDEFINIDO">Contrato indefinido</option>
+                            <option value="NOMBRAMIENTO">Nombramiento</option>
+                            <option value="CONTRATO/OCASIONAL">Contrato ocasional</option>
+                            <option value="CONTRATO/SERVICIOS">Contrato por servicios</option>
+                            <option value="NO/CONTRATO">No tengo contrato</option>
+                            <option value="OTRO">Otro</option><!-- debes poner un ng if-->
+                          </select>
+                        </ng-container>
+                      </ng-container>
+                      <ng-container *ngFor="let item of preguntas; let i = index;">
+                        <div *ngIf="item.id == 674 && res9 == 'OTRO'">
+                          <div class="form-row">
+                            <div class="col">
+                              <label>Describa cual</label>
+                              <textarea class="form-control" rows="3" (change)="id10 = item.id"
+                                        style="text-transform:uppercase;" [(ngModel)]="res10"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                    <br>
+                    <ng-container *ngFor="let item of preguntas; let i = index;">
+                      <ng-container *ngIf="item.id == 35">
+                        <div class=" form-group fech col-sm-6 col-md-6 col-xs-6">
+                          <label class="control-label">{{item.descripcion}}</label>
+                          <br>
+                          <select class="form-control" style="text-transform:uppercase;" [(ngModel)]="res11"
+                                  (change)="id11 = item.id">
+                            <option value="0">-- Seleccione --</option>
+                            <option value="TIEMPO/COMPLETO">Tiempo completo (8 horas de trabajo)</option>
+                            <option value="TIEMPO/PARCIAL">Tiempo parcial (por horas)</option>
+                          </select>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+
+                  <br>
+                  <div class="row newrow1" *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 36">
+                      <div class="fech col-sm-6 col-md-6 col-xs-6">
+                        <label>{{item.descripcion}}</label>
+                        <br>
+                        <input placeholder="ciudad" maxlength="9" style="text-transform:uppercase;" [(ngModel)]="res12"
+                               (change)="id12 = item.id">
+                      </div>
+                    </ng-container>
+                    <div class="fech col-sm-6 col-md-6 col-xs-6">
+                      <ng-container *ngIf="item.id == 37">
+                        <label>{{item.descripcion}}</label>
+                        <br>
+                        <input placeholder="pais" maxlength="10" style="text-transform:uppercase;" [(ngModel)]="res13"
+                               (change)="id13 = item.id">
+                      </ng-container>
+
+                    </div>
+                  </div>
+                  <br>
+                  <div class="colorBar col-lg-12"
+                       style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 38">
+                        <br>
+                        <h5>{{item.descripcion}}</h5>
+                        <br>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                  <div class="col-md-6 offset-md-3">
+                    <label class="control-label">Seleccione el Tipo de Empresa</label>
+                    <ng-container *ngFor="let item of preguntas">
+                      <select *ngIf="item.id == 38" class="form-control" style="text-transform:uppercase;"
+                              [(ngModel)]="res14" (change)="id14 = item.id">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="PUBLICA">Pública</option>
+                        <option value="PRIVADA">Privada</option>
+                        <option value="ONG">ONG</option>
+                        <option value="NEGOCIO/PROPIO">Negocio Propio</option>
+                      </select>
+                    </ng-container>
+                  </div>
+                  <br>
+                  <div class="colorBar col-lg-12"
+                       style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                    <br>
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 39">
+                        <h5>{{item.descripcion}}</h5>
+                      </ng-container>
+                    </ng-container>
+
+                    <br>
+                  </div>
+                  <br>
+                  <div class="col-md-6 offset-md-3">
+                    <label class="control-label">Seleccione:</label>
+                    <br>
+                    <ng-container *ngFor="let item of preguntas">
+                      <select *ngIf="item.id == 39" class="form-control" name="select3"
+                              (change)="id15 = item.id"
+                              [(ngModel)]="res15"
+                              style="text-transform:uppercase;">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="SERVICIO">Servicio</option>
+                        <option value="COMERCIAL">Comercial</option>
+                        <option value="FINANCIERO">Financiero</option>
+                        <option value="SALUD">Salud</option>
+                        <option value="EDUCACION">Educación</option>
+                        <option value="AGROPECUARIO">Agropecuario</option>
+                        <option value="INDUSTRIA">Industrial</option>
+                        <option value="PETROLEO">Petróleo</option>
+                        <option value="MEDIO/AMBIENTE">Medio Ambiente</option>
+                        <option value="MILITAR">Militar</option>
+                        <option value="OTRO">Otro</option>
+                      </select>
+                    </ng-container>
+                    <div *ngIf="res15 == 'OTRO'">
+                      <ng-container *ngFor="let item of preguntas">
+                        <div *ngIf="item.id == 675">
+                          <div class="form-row">
+                            <div class="col">
+                              <label>Describa cual</label>
+                              <textarea class="form-control" rows="3" (change)="id16 = item.id"
+                                        style="text-transform:uppercase;" [(ngModel)]="res16"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="colorBar col-lg-12"
+                       style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                    <br>
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 40">
+                        <h5>{{item.descripcion}}</h5>
+                      </ng-container>
+                    </ng-container>
+                    <br>
+                  </div>
+                  <div class="row newrow1" *ngFor="let item of preguntas">
+                    <div class="fech col-sm-4 col-md-4 col-xs-4" *ngIf="item.id == 41">
+                      <!--<label>Nombre de la Empresa</label>-->
+                      <ng-container *ngFor="let item of preguntas">
+                        <ng-container *ngIf="item.id == 41">
+                          <label>{{item.descripcion}}</label>
+                        </ng-container>
+                      </ng-container>
+                      <br>
+                      <input placeholder="Empresa...." maxlength="9" style="text-transform:uppercase;"
+                             [(ngModel)]="res17" (change)="id17 = item.id">
+                    </div>
+                    <div class="fech col-sm-4 col-md-4 col-xs-4" *ngIf="item.id == 43">
+                      <ng-container *ngFor="let item of preguntas">
+                        <ng-container *ngIf="item.id == 43">
+                          <label>{{item.descripcion}}</label>
+                        </ng-container>
+                      </ng-container>
+                      <!--<label>Teléfono Trabajo Actual</label>-->
+                      <br>
+                      <input placeholder="022*******" maxlength="10" [(ngModel)]="res18" (change)="id18 = item.id">
+                    </div>
+                    <div class="fech col-sm-4 col-md-4 col-xs-4" *ngIf="item.id == 44">
+                      <label>Nombre del Jefe Inmediato</label>
+                      <br>
+                      <input placeholder="Nombre..." maxlength="9" style="text-transform:uppercase;" [(ngModel)]="res19"
+                             (change)="id19 = item.id">
+                    </div>
+                    <div class="fech col-sm-4 col-md-4 col-xs-4" *ngIf="item.id == 45">
+                      <label>Correo del Jefe Inmediato</label>
+                      <br>
+                      <input placeholder="ejemplo@*****.com" maxlength="9" style="text-transform:lowercase"
+                             [(ngModel)]="res20" (change)="id20 = item.id">
+                    </div>
+                  </div>
+                  <br>
+                  <div class="col-md-6 offset-md-3">
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 42">
+                        <h6>{{item.descripcion}}</h6>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngFor="let item of preguntas">
+                      <select *ngIf="item.id == 42" class="form-control" style="text-transform:uppercase;"
+                              [(ngModel)]="res21" (change)="id21 = item.id">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="NACIONAL">Nacional</option>
+                        <option value="MULTINACIONAL">Multinacional</option>
+                      </select>
+                    </ng-container>
+                  </div>
+                  <br>
+                  <div class="colorBar col-lg-12"
+                       style="background-color: #004523; color: rgb(255, 255, 255);height: 15%;border: 1px solid  #000000;">
+                    <br>
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 46">
+                        <h5>{{item.descripcion}}</h5>
+                      </ng-container>
+                    </ng-container>
+                    <br>
+                  </div>
+                  <div class="col-md-6 offset-md-3">
+                    <label class="control-label"></label>
+                    <br>
+                    <ng-container *ngFor="let item of preguntas">
+                      <select *ngIf="item.id == 46" class="form-control" style="text-transform:uppercase;"
+                              [(ngModel)]="res22" (change)="id22 = item.id">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="MENOR/RBU">Menor de la Remuneración Básica Unificada (RBU)</option>
+                        <option value="RBU/1000">Entre RBU y $1.000</option>
+                        <option value="1001/2000">Entre $1.001 y $ 2.000</option>
+                        <option value="2001/3000">Entre $2.001 y $ 3.000</option>
+                        <option value="3001/5000">Entre $3.001 y $ 5.000</option>
+                        <option value="5001/+5001">Mayor a $5.001</option>
+                      </select>
+                    </ng-container>
+                  </div>
+                  <br>
+                  <div class="colorBar col-lg-12"
+                       style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                    <br>
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 47">
+                        <h5>{{item.descripcion}}</h5>
+                      </ng-container>
+                    </ng-container>
+                    <br>
+                  </div>
+                  <div class="col-md-6 offset-md-3">
+                    <label class="control-label">Seleccione</label>
+                    <ng-container *ngFor="let item of preguntas">
+                      <select *ngIf="item.id == 47" class="form-control" style="text-transform:uppercase;"
+                              [(ngModel)]="res23" (change)="id23 = item.id">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="SI">Sí</option>
+                        <option value="NO">No</option>
+                      </select>
+                    </ng-container>
+                    <div *ngIf="res23 == 'NO'">
+                      <ng-container *ngFor="let item of preguntas">
+                        <div *ngIf="item.id == 48">
+                          <div class="form-row">
+                            <div class="col">
+                              <label>Describa cual</label>
+                              <textarea class="form-control" rows="3" (change)="id24 = item.id"
+                                        style="text-transform:uppercase;" [(ngModel)]="res24"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="colorBar col-lg-12"
+                       style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                    <br>
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 49">
+                        <h5>{{item.descripcion}}</h5>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                  <br>
+                  <ng-container *ngFor="let item of preguntas">
+                    <div class="wrap-input100 col-md-6 offset-md-3">
+                      <label class="inp" *ngIf="item.id == 49">
+                        <input type="text" placeholder="&nbsp;" name="work" style="text-transform:uppercase;"
+                               [(ngModel)]="res25" (change)="id25 = item.id">
+                        <span class="label">Describa el Cargo</span>
+                        <span class="border"></span>
+                      </label>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <br>
+                <!-- / fin del ngIF-->
+                <!-- div -------------------------------- -->
+
+
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 50">
+                    <div class="colorBar col-lg-12 text-center"
+                         style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                      <br>
+                      <h5>{{item.descripcion}}</h5>
+                      <br>
+                    </div>
+                    <div class="col-md-6 offset-md-3">
+                      <label class="control-label">Seleccione</label>
+                      <select class="form-control" name="select4" [(ngModel)]="res26"
+                              (change)="id26 = item.id"
+                              style="text-transform:uppercase;">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="CONTACTOS/PEROSNALES">Contactos personales / familiares / amigos</option>
+                        <option value="PORTALES/EMPLEO">Portales de empleo en internet</option>
+                        <option value="PRACTICAS/PREPROFESIONALES">Prácticas pre-profesionales (horas vinculación ESPE)
+                        </option>
+                        <option value="ANUNCIOS">Anuncios (prensa, radio, entre otros)</option>
+                        <option value="REDES/SOCIALES">Redes sociales virtuales</option>
+                        <option value="ENTREGA/CURRICULUM">Entrega de hoja de vida o agencias de colocación</option>
+                        <option value="BOLSA/EMPLEO">Bolsa de empleo ESPE</option>
+                        <option value="CONTACTOS/U">Contactos de la universidad</option>
+                        <option value="OTRO">Otro</option>
+                      </select>
+                    </div>
+
+
+                    <div class="col-md-6 offset-md-3">
+                      <div *ngIf="item.id == 51 && res26 == 'OTRO'">
+                        <div class="form-row">
+                          <div class="col">
+                            <label>Describa cual</label>
+                            <textarea class="form-control" rows="3" (change)="id27 = item.id"
+                                      style="text-transform:uppercase;" [(ngModel)]="res27"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+
+
+                <br>
+                <!-- div -------------------------------- -->
+
+
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 52">
+                    <div class="colorBar col-lg-12 text-center"
+                         style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                      <br>
+                      <h5>{{item.descripcion}}</h5>
+                      <br>
+                    </div>
+
+                    <div class="col-md-6 offset-md-3">
+
+                      <label class="control-label">Seleccione</label>
+                      <br>
+                      <select class="form-control" name="select5" [(ngModel)]="res28"
+                              (change)="id28 = item.id"
+                              style="text-transform:uppercase;">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="CONCURSO/PUBLICO">Concurso público</option>
+                        <option value="CONCURSO/INTERNO">Concurso interno</option>
+                        <option value="LLAMAMIENTO/DIRECTO">Llamamiento directo</option>
+                        <option value="BOLSA/EMPLEO">Bolsa de empleo ESPE</option>
+                        <option value="OTRO">Otros</option>
+                      </select>
+
+                    </div>
+
+                    <div class="col-md-6 offset-md-3">
+                      <div *ngIf="item.id == 53 && res28 =='OTRO'">
+                        <div class="form-row">
+                          <div class="col">
+                            <label>Describa cual</label>
+                            <textarea class="form-control" rows="3" (change)="id29 = item.id"
+                                      style="text-transform:uppercase;" [(ngModel)]="res29"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+
+                <br>
+                <!-- div ------------------------------- -->
+                <div class="colorBar col-lg-12 text-center"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+                  <h5>¿Cuál es su condición si usted NO se encuentra trabajando?</h5>
+                  <br>
+                </div>
+                <div class="col-md-6 offset-md-3">
+                  <label class="control-label">Seleccione</label>
+                  <ng-container *ngFor="let item of preguntas">
+                    <select *ngIf="item.id == 54" class="form-control" name="select6"
+                            (change)="id30 = item.id"
+                            style="text-transform:uppercase;" [(ngModel)]="res30">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="BUSCANDO/TRABAJO">Buscando trabajo</option>
+                      <option value="ESTUDIANDO/TIEMPO/COMPLETO">Estudiando a Tiempo Completo:</option>
+                      <option value="ESTUDIANDO/TIEMPO/PARCIAL">Estudiando a Tiempo Parcial:</option>
+                      <option value="JUBILADO">Jubilado</option>
+                      <option value="ACTIVIDADES/HOGAR">Actividades del hogar</option>
+                      <option value="OTRO">Otro</option>
+                    </select>
+                    <div *ngIf="item.id == 55 && res30 == 'OTRO'">
+                      <div class="form-row">
+                        <div class="col">
+                          <label>Describa cual</label>
+                          <textarea class="form-control" rows="3" (change)="id31 = item.id"
+                                    style="text-transform:uppercase;" [(ngModel)]="res31"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <br>
+                <div>
+                  <div class="colorBar col-lg-12 text-center"
+                       style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                    <br>
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 57">
+                        <h5>{{item.descripcion}}</h5>
+                      </ng-container>
+                    </ng-container>
+                    <br>
+                  </div>
+                  <div class="col-md-6 offset-md-3">
+                    <label class="control-label">Seleccione</label>
+                    <ng-container *ngFor="let item of preguntas">
+                      <select *ngIf="item.id == 57" class="form-control" style="text-transform:uppercase;"
+                              [(ngModel)]="res32" (change)="id32 = item.id">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="0/6">Entre 0 y 6 meses</option>
+                        <option value="7/12">De 7 a 12 meses</option>
+                        <option value="+1">Más de 1 año</option>
+                      </select>
+                    </ng-container>
+                  </div>
+                </div>
+                <br>
+                <div class="row justify-content-around">
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    <a [routerLink]="['/web/academic']" class="btn btn-block btn-success">REGRESAR</a>
+                  </div>
+                  <br>
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    <a (click)="guardarData()" class="btn btn-block btn-success">SIGUIENTE</a>
+                  </div>
+                </div>
+                <br>
+              </div>
+            </div>
+          </ng-container>
+          <!--
+          SEGUNDA PARTE CONTINUARA
+          -->
+          <div class="card">
+            <div class="card-body text-center" *ngIf="validador == true">
+              <div class="colorBar col-lg-12"
+                   style="color: rgb(0, 0, 0);background-color: white; border-bottom: 9px solid gray;font-size: 100%  ">
+                <h2>EMPLEABILIDAD</h2>
+                <br>
+              </div>
+              <br>
+              <div class="colorBar col-lg-12"
+                   style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                <br>
+                <h5>PRIMER EMPLEO: (Aquella actividad laboral que recibió una remuneración con beneficios de ley)
+                </h5>
+                <br>
+              </div>
+              <br>
+
+              <div class="colorBar col-lg-12"
+                   style="border-bottom: solid 5px #004523; background-color: #ffffff; color: rgb(0, 0, 0)">
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 25">
+                    <h5>{{item.descripcion}}</h5>
+                  </ng-container>
+                </ng-container>
+              </div>
+              <ng-container *ngFor="let item of encuestaPreguntas; let i = index;">
+                <div class="row" *ngIf="item.preguntas.id == 25">
+                  <br>
+                  <div class="col-sm-6 col-md-6 col-xs-6" *ngIf="item.respuesta.descripcion == 'ANTES'">
+                    <br>
+                    <label class="inp">Antes de graduarse de pregrado</label>
+                    <br>
+                    <input *ngIf="!ocularCarrera1" (click)="ocularCarrera1=true" type="date" placeholder="12/12/2009"
+                           [(ngModel)]="item.respuesta.respuesta">
+                    <input *ngIf="ocularCarrera1" [autofocus]="true" type="date" placeholder="12/12/2009"
+                           [(ngModel)]="res1" (change)="id1 = item.respuesta.id">
+                  </div>
+                  <div class="fech col-sm-6 col-md-6 col-xs-6" *ngIf="item.respuesta.descripcion == 'DESPUES'">
+                    <br>
+                    <label class="inp">Después de graduarse de pregrado</label>
+                    <br>
+                    <input *ngIf="!ocularCarrera2" (click)="ocularCarrera2=true" type="date" placeholder="13/14/20010"
+                           [(ngModel)]="item.respuesta.respuesta">
+                    <input *ngIf="ocularCarrera2" [autofocus]="true" type="date" placeholder="12/12/2009"
+                           [(ngModel)]="res2" (change)="id2 = item.respuesta.id">
+                  </div>
+                </div>
+              </ng-container>
+              <br>
+              <div class="colorBar col-lg-12"
+                   style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                <br>
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 26">
+                    <h5>{{item.descripcion}}</h5>
+                  </ng-container>
+                </ng-container>
+                <br>
+              </div>
+              <ng-container *ngFor="let item of encuestaPreguntas; let i = index;">
+                <div class="col-md-6 offset-md-3" *ngIf="item.preguntas.id == 26">
+                  <br>
+                  <label class="control-label">¿Qué tiempo tardó?:</label>
+                  <select *ngIf="!ocularCarrera3" (click)="ocularCarrera3 = true" class="form-control"
+                          style="text-transform:uppercase;"
+                          [(ngModel)]="item.respuesta.respuesta">
+
+                    <option value="0">-- Seleccione --</option>
+                    <option value="0/6">Entre 0 y 6 meses</option>
+                    <option value="7/12">De 7 a 12 meses</option>
+                    <option value="+1">Más de 1 año</option>
+                  </select>
+                  <select *ngIf="ocularCarrera3" class="form-control" style="text-transform:uppercase;"
+                          [(ngModel)]="res3"
+                          (change)="id3 = item.respuesta.id">
+
+                    <option value="0">-- Seleccione --</option>
+                    <option value="0/6">Entre 0 y 6 meses</option>
+                    <option value="7/12">De 7 a 12 meses</option>
+                    <option value="+1">Más de 1 año</option>
+                  </select>
+                </div>
+              </ng-container>
+              <br>
+              <br>
+              <div class="colorBar col-lg-12"
+                   style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                <br>
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 27">
+                    <h5>{{item.descripcion}}</h5>
+                  </ng-container>
+                </ng-container>
+                <br>
+              </div>
+              <br>
+              <ng-container *ngFor="let item of encuestaPreguntas; let i = index;">
+                <div class="wrap-input100 col-md-6 offset-md-3" *ngIf="item.preguntas.id == 27">
+                  <label class="inp">
+                    <input *ngIf="!ocularCarrera4" (click)="ocularCarrera4 = true" type="number" placeholder="&nbsp;"
+                           name="work" [(ngModel)]="item.respuesta.respuesta">
+                    <span *ngIf="!ocularCarrera4" class="label">Número de trabajos</span>
+                    <span *ngIf="!ocularCarrera4" class="border"></span>
+                  </label>
+                  <label class="inp">
+                    <input *ngIf="ocularCarrera4" type="number" placeholder="&nbsp;" [autofocus]="true" name="work"
+                           [(ngModel)]="res4"
+                           (change)="id4 = item.respuesta.id">
+                    <span *ngIf="ocularCarrera4" class="label">Número de trabajos</span>
+                    <span *ngIf="ocularCarrera4" class="border"></span>
+                  </label>
+                </div>
+                <!--title-->
+                <div *ngIf="item.preguntas.id == 27 && res4 >1">
+                  <br><br>
+                  <div class="colorBar col-lg-12"
+                       style="color: rgb(0, 0, 0);background-color: white; border: 1px solid gray">
+                    <h5>Detalle los últimos trabajos que ha tenido</h5>
+                  </div>
+                  <div class="row justify-content-around offset-md-9">
+                    <button type="button" class="btn btn-success" data-toggle="modal"
+                            data-target="#exampleModalCenter1">
+                      Agregar nuevo
+                    </button>
+                  </div>
+
+                  <!--  Table -->
+                  <p-table [value]="tableArray1" [rows]="10">
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th>Nombre de la empresa</th>
+                        <th>Cargo que ocupó</th>
+                        <th>Tiempo Permanencia</th>
+                        <th>Año Ingreso</th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-tableArray1>
+                      <tr>
+                        <td>{{tableArray1.nombreEmp}}</td>
+                        <td>{{tableArray1.cargo}}</td>
+                        <td>{{tableArray1.tiempo}}</td>
+                        <td>{{tableArray1.anio}}</td>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="footer">
+
+                    </ng-template>
+                  </p-table>
+                </div>
+                <!--  Table End -->
+              </ng-container>
+              <br>
+              <div class="colorBar col-lg-12"
+                   style="color: rgb(0, 0, 0);background-color: white; border: 1px solid gray; height: 50px;">
+                <br>
+                <h6>Situación laboral Actual</h6>
+                <br>
+              </div>
+              <br>
+              <div class="colorBar col-lg-12"
+                   style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                <br>
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 32">
+                    <h5>{{item.descripcion}}</h5>
+                  </ng-container>
+                </ng-container>
+                <br>
+              </div>
+              <ng-container *ngFor="let item of encuestaPreguntas; let i = index;">
+                <div class="col-md-6 offset-md-3" *ngIf="item.preguntas.id == 32"><br>
+                  <label class="control-label"><br>Seleccione</label>
+
+                  <select *ngIf="!ocularCarrera5" (click)="ocularCarrera5 = true" class="form-control"
+                          [(ngModel)]="item.respuesta.respuesta"
+                          style="text-transform:uppercase;">
+                    <option>-- Seleccione --</option>
+                    <option value="SI">Sí</option>
+                    <option value="NO">No</option>
+                  </select>
+                  <select *ngIf="ocularCarrera5" class="form-control" [(ngModel)]="res5"
+                          style="text-transform:uppercase;">
+                    <option>-- Seleccione --</option>
+                    <option value="SI">Sí</option>
+                    <option value="NO">No</option>
+                  </select>
+                </div>
+              </ng-container>
+              <br>
+              <div *ngIf="res5 == 'SI'">
+                <ng-container *ngFor="let item of encuestaPreguntas; let i = index;">
+                  <div class="row">
+                    <div class="fech col-sm-5 col-md-5 col-xs-5" *ngIf="item.preguntas.id == 33">
+                      <ng-container *ngFor="let item of preguntas">
+                        <ng-container *ngIf="item.id == 33">
+                          <label>{{item.descripcion}}</label>
+                        </ng-container>
+                      </ng-container>
+                      <input *ngIf="item.respuesta.descripcion == 'ANIOS' && !ocularCarrera6"
+                             (click)="ocularCarrera6 = true" type="number" placeholder="Años" min="1"
+                             max="20" [(ngModel)]="item.respuesta.respuesta">
+
+                      <input *ngIf="item.respuesta.descripcion == 'ANIOS' &&  ocularCarrera6" [autofocus]="true"
+                             type="number" placeholder="Años" min="1"
+                             max="20" [(ngModel)]="res6"
+                             (change)="id6 = item.respuesta.id">
+
+
+                      <input *ngIf="item.respuesta.descripcion == 'MESES' && !ocularCarrera7"
+                             (click)="ocularCarrera7 = true" type="number" placeholder="Meses" min="1"
+                             max="12" [(ngModel)]="item.respuesta.respuesta">
+
+
+                      <input *ngIf="item.respuesta.descripcion == 'MESES' && ocularCarrera7" [autofocus]="true"
+                             type="number" placeholder="Meses" min="1"
+                             max="12" [(ngModel)]="res7"
+                             (change)="id7 = item.respuesta.id">
+
+                    </div>
+                    <div class="fech col-sm-5 col-md-5 col-xs-5" *ngIf="item.preguntas.id == 34">
+                      <br>
+                      <ng-container *ngFor="let item of preguntas">
+                        <ng-container *ngIf="item.id == 34">
+                          <label>{{item.descripcion}}</label>
+                        </ng-container>
+                      </ng-container>
+                      <input type="date" [(ngModel)]="item.respuesta.respuesta">
+                    </div>
+                  </div>
+                </ng-container>
+                <br><br>
+
+                <div class="row newrow1 justify-content-start">
+                  <div class="form-group fech col-sm-6 col-md-6 col-xs-6">
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 673">
+                        <label>{{item.descripcion}}</label>
+                      </ng-container>
+                    </ng-container>
+                    <ng-container *ngFor="let item of encuestaPreguntas; let i = index;">
+                      <select *ngIf="item.preguntas.id == 673 && !ocularCarrera8" (click)="ocularCarrera8 = true"
+                              class="form-control" name="select1"
+                              [(ngModel)]="item.respuesta.respuesta"
+                              style="text-transform:uppercase;">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="CONTRATO/INDEFINIDO">Contrato indefinido</option>
+                        <option value="NOMBRAMIENTO">Nombramiento</option>
+                        <option value="CONTRATO/OCASIONAL">Contrato ocasional</option>
+                        <option value="CONTRATO/SERVICIOS">Contrato por servicios</option>
+                        <option value="NO/CONTRATO">No tengo contrato</option>
+                        <option value="OTRO">Otro</option><!-- debes poner un ng if-->
+                      </select>
+                      <select *ngIf="item.preguntas.id == 673  && ocularCarrera8" class="form-control" name="select1"
+                              (change)="id9 = item.respuesta.id"
+                              [(ngModel)]="res9"
+                              style="text-transform:uppercase;">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="CONTRATO/INDEFINIDO">Contrato indefinido</option>
+                        <option value="NOMBRAMIENTO">Nombramiento</option>
+                        <option value="CONTRATO/OCASIONAL">Contrato ocasional</option>
+                        <option value="CONTRATO/SERVICIOS">Contrato por servicios</option>
+                        <option value="NO/CONTRATO">No tengo contrato</option>
+                        <option value="OTRO">Otro</option><!-- debes poner un ng if-->
+                      </select>
+                    </ng-container>
+                    <ng-container *ngFor="let item of encuestaPreguntas; let i = index;">
+                      <div *ngIf="item.preguntas.id == 674 && res9 == 'OTRO'">
+                        <div class="form-row">
+                          <div class="col">
+                            <label>Describa cual</label>
+                            <textarea *ngIf="!ocularCarrera9" (click)="ocularCarrera9 = true" class="form-control"
+                                      rows="3"
+                                      style="text-transform:uppercase;"
+                                      [(ngModel)]="item.respuesta.respuesta"></textarea>
+                            <textarea *ngIf="ocularCarrera9" class="form-control" rows="3"
+                                      (change)="id10 = item.respuesta.id"
+                                      style="text-transform:uppercase;" [(ngModel)]="res10"></textarea>
+
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                  <br>
+                  <ng-container *ngFor="let item of encuestaPreguntas; let i = index;">
+                    <div class=" form-group fech col-sm-6 col-md-6 col-xs-6" *ngIf="item.preguntas.id == 35">
+                      <!--<label class="control-label">El tipo de Contrato que usted tiene es:</label>-->
+
+                      <ng-container *ngIf="item.preguntas.id == 35">
+                        <label>{{item.descripcion}}</label>
+                      </ng-container>
+
+                      <select *ngIf="!ocularCarrera10" (click)="ocularCarrera10 = true" class="form-control"
+                              style="text-transform:uppercase;"
+                              [(ngModel)]="item.respuesta.respuesta"
+                      >
+                        <option value="0">-- Seleccione --</option>
+                        <option value="TIEMPO/COMPLETO">Tiempo completo (8 horas de trabajo)</option>
+                        <option value="TIEMPO/PARCIAL">Tiempo parcial (por horas)</option>
+                      </select>
+                      <select *ngIf="ocularCarrera10" class="form-control" style="text-transform:uppercase;"
+                              [(ngModel)]="res11"
+                              (change)="id11 = item.respuesta.id">
+                        <option value="0">-- Seleccione --</option>
+                        <option value="TIEMPO/COMPLETO">Tiempo completo (8 horas de trabajo)</option>
+                        <option value="TIEMPO/PARCIAL">Tiempo parcial (por horas)</option>
+                      </select>
+                    </div>
+                  </ng-container>
+                </div>
+                <br>
+                <div class="row newrow1" *ngFor="let item of encuestaPreguntas">
+                  <div class="fech col-sm-6 col-md-6 col-xs-6" *ngIf="item.preguntas.id == 36">
+                    <!--<label>Ciudad de trabajo Actual</label>-->
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 36">
+                        <label>{{item.descripcion}}</label>
+                      </ng-container>
+                    </ng-container>
+                    <br>
+                    <input *ngIf="!ocularCarrera11" (click)="ocularCarrera11 = true" placeholder="ciudad"
+                           maxlength="9" style="text-transform:uppercase;"
+                           [(ngModel)]="item.respuesta.respuesta">
+                    <input *ngIf="ocularCarrera11" placeholder="ciudad" maxlength="9"
+                           style="text-transform:uppercase;" [(ngModel)]="res12"
+                           (change)="id12 = item.respuesta.id">
+                  </div>
+                  <div class="fech col-sm-6 col-md-6 col-xs-6" *ngIf="item.preguntas.id == 37">
+                    <!--<label>En el Extranjero País</label>-->
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 37">
+                        <label>{{item.descripcion}}</label>
+                      </ng-container>
+                    </ng-container>
+                    <br>
+                    <input *ngIf="!ocularCarrera12" (click)="ocularCarrera12 = true" placeholder="pais" maxlength="10"
+                           style="text-transform:uppercase;"
+                           [(ngModel)]="item.respuesta.respuesta">
+                    <input *ngIf="ocularCarrera12" placeholder="pais" maxlength="10" style="text-transform:uppercase;"
+                           [(ngModel)]="res13"
+                           (change)="id13 = item.respuesta.id">
+                  </div>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 38">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <!--<h5>Usted trabaja en empresa</h5>-->
+                  <br>
+                </div>
+                <div class="col-md-6 offset-md-3">
+                  <label class="control-label">Seleccione el Tipo de Empresa</label>
+                  <ng-container *ngFor="let item of encuestaPreguntas">
+                    <select *ngIf="item.preguntas.id == 38 && !ocularCarrera13" (click)="ocularCarrera13 = true"
+                            class="form-control" style="text-transform:uppercase;"
+                            [(ngModel)]="item.respuesta.respuesta">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="PUBLICA">Pública</option>
+                      <option value="PRIVADA">Privada</option>
+                      <option value="ONG">ONG</option>
+                      <option value="NEGOCIO/PROPIO">Negocio Propio</option>
+                    </select>
+                    <select *ngIf="item.preguntas.id == 38 && ocularCarrera13" class="form-control"
+                            style="text-transform:uppercase;"
+                            [(ngModel)]="res14" (change)="id14 = item.respuesta.id">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="PUBLICA">Pública</option>
+                      <option value="PRIVADA">Privada</option>
+                      <option value="ONG">ONG</option>
+                      <option value="NEGOCIO/PROPIO">Negocio Propio</option>
+                    </select>
+                  </ng-container>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 39">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <!--<h5>Sector de la economía de la empresa:</h5>-->
+                  <br>
+                </div>
+                <div class="col-md-6 offset-md-3">
+                  <label class="control-label">¿Qué tiempo tardó?:</label>
+                  <ng-container *ngFor="let item of encuestaPreguntas">
+                    <select *ngIf="item.preguntas.id == 39 && !ocularCarrera14" (click)="ocularCarrera14 = true"
+                            class="form-control" name="select3"
+
+                            [(ngModel)]="item.respuesta.respuesta"
+                            style="text-transform:uppercase;">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="SERVICIO">Servicio</option>
+                      <option value="COMERCIAL">Comercial</option>
+                      <option value="FINANCIERO">Financiero</option>
+                      <option value="SALUD">Salud</option>
+                      <option value="EDUCACION">Educación</option>
+                      <option value="AGROPECUARIO">Agropecuario</option>
+                      <option value="INDUSTRIA">Industrial</option>
+                      <option value="PETROLEO">Petróleo</option>
+                      <option value="MEDIO/AMBIENTE">Medio Ambiente</option>
+                      <option value="MILITAR">Militar</option>
+                      <option value="OTRO">Otro</option>
+                    </select>
+                    <select *ngIf="item.preguntas.id == 39 && ocularCarrera14" class="form-control" name="select3"
+                            (change)="id15 = item.respuesta.id"
+                            [(ngModel)]="res15"
+                            style="text-transform:uppercase;">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="SERVICIO">Servicio</option>
+                      <option value="COMERCIAL">Comercial</option>
+                      <option value="FINANCIERO">Financiero</option>
+                      <option value="SALUD">Salud</option>
+                      <option value="EDUCACION">Educación</option>
+                      <option value="AGROPECUARIO">Agropecuario</option>
+                      <option value="INDUSTRIA">Industrial</option>
+                      <option value="PETROLEO">Petróleo</option>
+                      <option value="MEDIO/AMBIENTE">Medio Ambiente</option>
+                      <option value="MILITAR">Militar</option>
+                      <option value="OTRO">Otro</option>
+                    </select>
+                  </ng-container>
+                  <ng-container *ngFor="let item of encuestaPreguntas">
+                    <div *ngIf="item.preguntas.id == 675 && res15 == 'OTRO'">
+                      <div class="form-row">
+                        <div class="col">
+                          <label>Describa cual</label>
+                          <textarea *ngIf="!ocularCarrera15" (click)="ocularCarrera15 = true" class="form-control"
+                                    rows="3"
+                                    style="text-transform:uppercase;"
+                                    [(ngModel)]="item.respuesta.respuesta"></textarea>
+                          <textarea *ngIf="ocularCarrera15" class="form-control" rows="3"
+                                    (change)="id16 = item.respuesta.id"
+                                    style="text-transform:uppercase;" [(ngModel)]="res16"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 40">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <!--<h5>Datos Informativos de la Empresa</h5>-->
+                  <br>
+                </div>
+                <div class="row newrow1" *ngFor="let item of encuestaPreguntas">
+                  <div class="fech col-sm-4 col-md-4 col-xs-4" *ngIf="item.preguntas.id == 41">
+
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 41">
+                        <label>{{item.descripcion}}</label>
+                      </ng-container>
+                    </ng-container>
+
+                    <!--<label>Nombre de la Empresa</label>-->
+                    <br>
+                    <input *ngIf="!ocularCarrera16" (click)="ocularCarrera16 = true" placeholder="Empresa...."
+                           maxlength="9" style="text-transform:uppercase;"
+                           [(ngModel)]="item.respuesta.respuesta">
+                    <input *ngIf="ocularCarrera16" placeholder="Empresa...." maxlength="9"
+                           style="text-transform:uppercase;"
+                           [(ngModel)]="res17" (change)="id17 = item.respuesta.id">
+                  </div>
+                  <div class="fech col-sm-4 col-md-4 col-xs-4" *ngIf="item.preguntas.id == 43">
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 43">
+                        <label>{{item.descripcion}}</label>
+                      </ng-container>
+                    </ng-container>
+                    <!--<label>Teléfono Trabajo Actual</label>-->
+                    <br>
+                    <input *ngIf="!ocularCarrera17" (click)="ocularCarrera17 = true" placeholder="022*******"
+                           maxlength="10" [(ngModel)]="item.respuesta.respuesta">
+                    <input *ngIf="ocularCarrera17" placeholder="022*******" maxlength="10" [(ngModel)]="res18"
+                           (change)="id18 = item.respuesta.id">
+                  </div>
+                  <div class="fech col-sm-4 col-md-4 col-xs-4" *ngIf="item.preguntas.id == 44">
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 44">
+                        <label>{{item.descripcion}}</label>
+                      </ng-container>
+                    </ng-container>
+                    <!--<label>Nombre del Jefe Inmediato</label>-->
+                    <br>
+                    <input *ngIf="!ocularCarrera18" (click)="ocularCarrera18 = true" placeholder="Nombre..."
+                           maxlength="9" style="text-transform:uppercase;"
+                           [(ngModel)]="item.respuesta.respuesta">
+                    <input *ngIf="ocularCarrera18" placeholder="Nombre..." maxlength="9"
+                           style="text-transform:uppercase;" [(ngModel)]="res19"
+                           (change)="id19 = item.respuesta.id">
+                  </div>
+                  <div class="fech col-sm-4 col-md-4 col-xs-4" *ngIf="item.preguntas.id == 45">
+                    <ng-container *ngFor="let item of preguntas">
+                      <ng-container *ngIf="item.id == 45">
+                        <label>{{item.descripcion}}</label>
+                      </ng-container>
+                    </ng-container>
+                    <!--<label>Correo del Jefe Inmediato</label>-->
+                    <br>
+                    <input *ngIf="!ocularCarrera19" (click)="ocularCarrera19 = true" placeholder="ejemplo@*****.com"
+                           maxlength="9" style="text-transform:lowercase"
+                           [(ngModel)]="item.respuesta.respuesta">
+                    <input *ngIf="ocularCarrera19" placeholder="ejemplo@*****.com" maxlength="9"
+                           style="text-transform:lowercase"
+                           [(ngModel)]="res20" (change)="id20 = item.respuesta.id">
+                  </div>
+                </div>
+                <br>
+                <div class="col-md-6 offset-md-3">
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 42">
+                      <label>{{item.descripcion}}</label>
+                    </ng-container>
+                  </ng-container>
+                  <!--<label class="control-label">Ámbito de la actividad de la empresa:</label>-->
+                  <ng-container *ngFor="let item of encuestaPreguntas">
+                    <select *ngIf="item.preguntas.id == 42 && !ocularCarrera20" (click)="ocularCarrera20 = true"
+                            class="form-control" style="text-transform:uppercase;"
+                            [(ngModel)]="item.respuesta.respuesta">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="NACIONAL">Nacional</option>
+                      <option value="MULTINACIONAL">Multinacional</option>
+                    </select>
+                    <select *ngIf="item.preguntas.id == 42 && ocularCarrera20" class="form-control"
+                            style="text-transform:uppercase;"
+                            [(ngModel)]="res21" (change)="id21 = item.respuesta.id">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="NACIONAL">Nacional</option>
+                      <option value="MULTINACIONAL">Multinacional</option>
+                    </select>
+                  </ng-container>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);height: 15%;border: 1px solid  #000000;">
+                  <br>
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 46">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <!--<h5>Señala ¿Cuál es la remuneración mensual que recibe por el trabajo que
+                    desempeña como trabajador o empresario?</h5>-->
+                  <br>
+                </div>
+                <div class="col-md-6 offset-md-3">
+                  <label class="control-label"></label>
+                  <ng-container *ngFor="let item of encuestaPreguntas">
+                    <select *ngIf="item.preguntas.id == 46 && !ocularCarrera21" (click)="ocularCarrera21 = true"
+                            class="form-control" style="text-transform:uppercase;"
+                            [(ngModel)]="item.respuesta.respuesta">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="MENOR/RBU">Menor de la Remuneración Básica Unificada (RBU)</option>
+                      <option value="RBU/1000">Entre RBU y $1.000</option>
+                      <option value="1001/2000">Entre $1.001 y $ 2.000</option>
+                      <option value="2001/3000">Entre $2.001 y $ 3.000</option>
+                      <option value="3001/5000">Entre $3.001 y $ 5.000</option>
+                      <option value="5001/+5001">Mayor a $5.001</option>
+                    </select>
+                    <select *ngIf="item.preguntas.id == 46 && ocularCarrera21" class="form-control"
+                            style="text-transform:uppercase;"
+                            [(ngModel)]="res22" (change)="id22 = item.respuesta.id">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="MENOR/RBU">Menor de la Remuneración Básica Unificada (RBU)</option>
+                      <option value="RBU/1000">Entre RBU y $1.000</option>
+                      <option value="1001/2000">Entre $1.001 y $ 2.000</option>
+                      <option value="2001/3000">Entre $2.001 y $ 3.000</option>
+                      <option value="3001/5000">Entre $3.001 y $ 5.000</option>
+                      <option value="5001/+5001">Mayor a $5.001</option>
+                    </select>
+                  </ng-container>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 47">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <!--<h5>¿El cargo que actualmente desempeña está acorde a sus estudios y título
+                    obtenido?</h5>-->
+                  <br>
+                </div>
+                <div class="col-md-6 offset-md-3">
+                  <label class="control-label">Seleccione</label>
+                  <ng-container *ngFor="let item of encuestaPreguntas">
+                    <select *ngIf="item.preguntas.id == 47 && !ocularCarrera22" (click)="ocularCarrera22 = true"
+                            class="form-control" style="text-transform:uppercase;"
+                            [(ngModel)]="item.respuesta.respuesta">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="SI">Sí</option>
+                      <option value="NO">No</option>
+                    </select>
+                    <select *ngIf="item.preguntas.id == 47 && ocularCarrera22" class="form-control"
+                            style="text-transform:uppercase;"
+                            [(ngModel)]="res23" (change)="id23 = item.respuesta.id">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="SI">Sí</option>
+                      <option value="NO">No</option>
+                    </select>
+                  </ng-container>
+                  <ng-container *ngFor="let item of encuestaPreguntas">
+                    <div *ngIf="item.preguntas.id == 48 && res23 == 'NO'">
+                      <div class="form-row">
+                        <div class="col">
+                          <label>Describa cual</label>
+                          <textarea *ngIf="!ocularCarrera23" (click)="ocularCarrera23 = true" class="form-control"
+                                    rows="3"
+                                    style="text-transform:uppercase;"
+                                    [(ngModel)]="item.respuesta.respuesta"></textarea>
+                          <textarea *ngIf="ocularCarrera23" class="form-control" rows="3"
+                                    (change)="id24 = item.respuesta.id"
+                                    style="text-transform:uppercase;" [(ngModel)]="res24"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 49">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <br>
+                </div>
+                <br>
+                <ng-container *ngFor="let item of encuestaPreguntas">
+                  <div class="wrap-input100 col-md-6 offset-md-3">
+                    <label class="inp" *ngIf="item.preguntas.id == 49">
+                      <input *ngIf="!ocularCarrera24" (click)="ocularCarrera24 = true" type="text"
+                             placeholder="&nbsp;" name="work" style="text-transform:uppercase;"
+                             [(ngModel)]="item.respuesta.respuesta">
+                      <input *ngIf="ocularCarrera24" type="text" placeholder="&nbsp;" name="work"
+                             style="text-transform:uppercase;"
+                             [(ngModel)]="res25" (change)="id25 = item.respuesta.id">
+                      <span class="label">Describa el Cargo</span>
+                      <span class="border"></span>
+                    </label>
+                  </div>
+                </ng-container>
+              </div>
+              <br>
+              <!-- / fin del ngIF-->
+              <!-- div -------------------------------- -->
+              <div class="colorBar col-lg-12"
+                   style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                <br>
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 50">
+                    <h5>{{item.descripcion}}</h5>
+                  </ng-container>
+                </ng-container>
+                <br>
+              </div>
+              <div class="col-md-6 offset-md-3">
+                <label class="control-label">Seleccione</label>
+                <ng-container *ngFor="let item of encuestaPreguntas">
+                  <select *ngIf="item.preguntas.id == 50 && !ocularCarrera25" (click)="ocularCarrera25 = true"
+                          class="form-control" name="select4"
+                          [(ngModel)]="item.respuesta.respuesta"
+                          style="text-transform:uppercase;">
+                    <option value="0">-- Seleccione --</option>
+                    <option value="CONTACTOS/PEROSNALES">Contactos personales / familiares / amigos</option>
+                    <option value="PORTALES/EMPLEO">Portales de empleo en internet</option>
+                    <option value="PRACTICAS/PREPROFESIONALES">Prácticas pre-profesionales (horas vinculación ESPE)
+                    </option>
+                    <option value="ANUNCIOS">Anuncios (prensa, radio, entre otros)</option>
+                    <option value="REDES/SOCIALES">Redes sociales virtuales</option>
+                    <option value="ENTREGA/CURRICULUM">Entrega de hoja de vida o agencias de colocación</option>
+                    <option value="BOLSA/EMPLEO">Bolsa de empleo ESPE</option>
+                    <option value="CONTACTOS/U">Contactos de la universidad</option>
+                    <option value="OTRO">Otro</option>
+                  </select>
+                  <select *ngIf="item.preguntas.id == 50 && ocularCarrera25" class="form-control" name="select4"
+                          [(ngModel)]="res26"
+                          (change)="id26 = item.respuesta.id"
+                          style="text-transform:uppercase;">
+                    <option value="0">-- Seleccione --</option>
+                    <option value="CONTACTOS/PEROSNALES">Contactos personales / familiares / amigos</option>
+                    <option value="PORTALES/EMPLEO">Portales de empleo en internet</option>
+                    <option value="PRACTICAS/PREPROFESIONALES">Prácticas pre-profesionales (horas vinculación ESPE)
+                    </option>
+                    <option value="ANUNCIOS">Anuncios (prensa, radio, entre otros)</option>
+                    <option value="REDES/SOCIALES">Redes sociales virtuales</option>
+                    <option value="ENTREGA/CURRICULUM">Entrega de hoja de vida o agencias de colocación</option>
+                    <option value="BOLSA/EMPLEO">Bolsa de empleo ESPE</option>
+                    <option value="CONTACTOS/U">Contactos de la universidad</option>
+                    <option value="OTRO">Otro</option>
+                  </select>
+                  <div *ngIf="item.preguntas.id == 51 && res26 == 'OTRO'">
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Describa cual</label>
+                        <textarea *ngIf="!ocularCarrera26" (click)="ocularCarrera26 = true" class="form-control"
+                                  rows="3"
+                                  style="text-transform:uppercase;" [(ngModel)]="item.respuesta.respuesta"></textarea>
+                        <textarea *ngIf="ocularCarrera26" class="form-control" rows="3"
+                                  (change)="id27 = item.respuesta.id"
+                                  style="text-transform:uppercase;" [(ngModel)]="res27"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+
+
+              </div>
+              <br>
+              <!-- div -------------------------------- -->
+              <div class="colorBar col-lg-12"
+                   style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                <br>
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 52">
+                    <h5>{{item.descripcion}}</h5>
+                  </ng-container>
+                </ng-container>
+                <br>
+              </div>
+              <div class="col-md-6 offset-md-3">
+                <label class="control-label">Seleccione</label>
+                <ng-container *ngFor="let item of encuestaPreguntas">
+                  <select *ngIf="item.preguntas.id == 52 && !ocularCarrera27" (click)="ocularCarrera27 = true"
+                          class="form-control" name="select5"
+                          [(ngModel)]="item.respuesta.respuesta"
+
+                          style="text-transform:uppercase;">
+                    <option value="0">-- Seleccione --</option>
+                    <option value="CONCURSO/PUBLICO">Concurso público</option>
+                    <option value="CONCURSO/INTERNO">Concurso interno</option>
+                    <option value="LLAMAMIENTO/DIRECTO">Llamamiento directo</option>
+                    <option value="BOLSA/EMPLEO">Bolsa de empleo ESPE</option>
+                    <option value="OTRO">Otros</option>
+                  </select>
+                  <select *ngIf="item.preguntas.id == 52 && ocularCarrera27" class="form-control" name="select5"
+                          [(ngModel)]="res28"
+                          (change)="id28 = item.respuesta.id"
+                          style="text-transform:uppercase;">
+                    <option value="0">-- Seleccione --</option>
+                    <option value="CONCURSO/PUBLICO">Concurso público</option>
+                    <option value="CONCURSO/INTERNO">Concurso interno</option>
+                    <option value="LLAMAMIENTO/DIRECTO">Llamamiento directo</option>
+                    <option value="BOLSA/EMPLEO">Bolsa de empleo ESPE</option>
+                    <option value="OTRO">Otros</option>
+                  </select>
+                  <div *ngIf="item.preguntas.id == 53 && res28 =='OTRO'">
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Describa cual</label>
+                        <textarea *ngIf="!ocularCarrera28" (click)="ocularCarrera28 = true" class="form-control"
+                                  rows="3"
+                                  style="text-transform:uppercase;" [(ngModel)]="item.respuesta.respuesta"></textarea>
+                        <textarea *ngIf="ocularCarrera28" class="form-control" rows="3"
+                                  (change)="id29 = item.respuesta.id"
+                                  style="text-transform:uppercase;" [(ngModel)]="res29"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+              <br>
+              <!-- div ------------------------------- -->
+              <div class="colorBar col-lg-12"
+                   style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                <br>
+                <ng-container *ngFor="let item of preguntas">
+                  <ng-container *ngIf="item.id == 54">
+                    <h5>{{item.descripcion}}</h5>
+                  </ng-container>
+                </ng-container>
+                <br>
+              </div>
+              <div class="col-md-6 offset-md-3">
+                <label class="control-label">Seleccione</label>
+                <ng-container *ngFor="let item of encuestaPreguntas">
+                  <select *ngIf="item.preguntas.id == 54 && !ocularCarrera29" (click)="ocularCarrera29 = true"
+                          class="form-control" name="select6"
+                          style="text-transform:uppercase;" [(ngModel)]="item.respuesta.respuesta">
+                    <option value="0">-- Seleccione --</option>
+                    <option value="BUSCANDO/TRABAJO">Buscando trabajo</option>
+                    <option value="ESTUDIANDO/TIEMPO/COMPLETO">Estudiando a Tiempo Completo:</option>
+                    <option value="ESTUDIANDO/TIEMPO/PARCIAL">Estudiando a Tiempo Parcial:</option>
+                    <option value="JUBILADO">Jubilado</option>
+                    <option value="ACTIVIDADES/HOGAR">Actividades del hogar</option>
+                    <option value="OTRO">Otro</option>
+                  </select>
+                  <select *ngIf="item.preguntas.id == 54 && ocularCarrera29" class="form-control" name="select6"
+                          (change)="id30 = item.respuesta.id"
+                          style="text-transform:uppercase;" [(ngModel)]="res30">
+                    <option value="0">-- Seleccione --</option>
+                    <option value="BUSCANDO/TRABAJO">Buscando trabajo</option>
+                    <option value="ESTUDIANDO/TIEMPO/COMPLETO">Estudiando a Tiempo Completo:</option>
+                    <option value="ESTUDIANDO/TIEMPO/PARCIAL">Estudiando a Tiempo Parcial:</option>
+                    <option value="JUBILADO">Jubilado</option>
+                    <option value="ACTIVIDADES/HOGAR">Actividades del hogar</option>
+                    <option value="OTRO">Otro</option>
+                  </select>
+                  <div *ngIf="item.preguntas.id == 55 && res30 == 'OTRO'">
+                    <div class="form-row">
+                      <div class="col">
+                        <label>Describa cual</label>
+                        <textarea *ngIf="!ocularCarrera30" (click)="ocularCarrera30 = true" class="form-control"
+                                  rows="3"
+                                  style="text-transform:uppercase;" [(ngModel)]="item.respuesta.respuesta"></textarea>
+                        <textarea *ngIf="ocularCarrera30" class="form-control" rows="3"
+                                  (change)="id31 = item.respuesta.id"
+                                  style="text-transform:uppercase;" [(ngModel)]="res31"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+              <br>
+              <div>
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 57">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <br>
+                </div>
+                <div class="col-md-6 offset-md-3">
+                  <label class="control-label">Seleccione</label>
+                  <ng-container *ngFor="let item of encuestaPreguntas">
+                    <select *ngIf="item.preguntas.id == 57 && !ocularCarrera31" (click)="ocularCarrera31"
+                            class="form-control" style="text-transform:uppercase;"
+                            [(ngModel)]="item.respuesta.respuesta">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="0/6">Entre 0 y 6 meses</option>
+                      <option value="7/12">De 7 a 12 meses</option>
+                      <option value="+1">Más de 1 año</option>
+                    </select>
+                    <select *ngIf="item.id == 57 && ocularCarrera31" class="form-control"
+                            style="text-transform:uppercase;"
+                            [(ngModel)]="res32" (change)="id32 = item.respuesta.id">
+                      <option value="0">-- Seleccione --</option>
+                      <option value="0/6">Entre 0 y 6 meses</option>
+                      <option value="7/12">De 7 a 12 meses</option>
+                      <option value="+1">Más de 1 año</option>
+                    </select>
+                  </ng-container>
+                </div>
+              </div>
+              <br>
+              <div class="row justify-content-around">
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <a [routerLink]="['/web/academic']" class="btn btn-block btn-primary">REGRESAR</a>
+                </div>
+                <br>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                  <a (click)="actualizarData()" class="btn btn-block btn-primary">SIGUIENTE</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Agregar nuevo Trabajo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="wrap-input100 col-12 ">
+          <label class="inp">
+            <input type="text" placeholder="&nbsp;" [(ngModel)]="resM1" (change)="idM1 = 28">
+            <span class="label">Nombre de la empresa</span>
+            <span class="border"></span>
+          </label>
+          <br>
+          <label class="inp">
+            <input type="text" placeholder="&nbsp;" [(ngModel)]="resM2" (change)="idM2 = 29">
+            <span class="label">Cargo que ocupó</span>
+            <span class="border"></span>
+          </label>
+          <label class="inp">
+            <input type="text" placeholder="&nbsp;" [(ngModel)]="resM3" (change)="idM3 = 30">
+            <span class="label">Tiempo Permanencia</span>
+            <span class="border"></span>
+          </label>
+          <label class="inp">
+            <input type="text" placeholder="&nbsp;" [(ngModel)]="resM4" (change)="idM4 = 31">
+            <span class="label">Año Ingreso</span>
+            <span class="border"></span>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter1" role="dialog" aria-labelledby="exampleModalCenterTitle1"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle1">Agregar nuevo Trabajo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="wrap-input100 col-12 offset-md-2">
+          <label class="inp">
+            <input type="text" placeholder="&nbsp;" [(ngModel)]="resM1" (change)="idM1 = 28">
+            <span class="label">Nombre de la empresa</span>
+            <span class="border"></span>
+          </label>
+          <label class="inp">
+            <input type="text" placeholder="&nbsp;" [(ngModel)]="resM2" (change)="idM2 = 29">
+            <span class="label">Cargo que ocupó</span>
+            <span class="border"></span>
+          </label>
+          <label class="inp">
+            <input type="text" placeholder="&nbsp;" [(ngModel)]="resM3" (change)="idM3 = 30">
+            <span class="label">Tiempo Permanencia</span>
+            <span class="border"></span>
+          </label>
+          <label class="inp">
+            <input type="text" placeholder="&nbsp;" [(ngModel)]="resM4" (change)="idM4 = 31">
+            <span class="label">Año Ingreso</span>
+            <span class="border"></span>
+          </label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="guardarModal()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

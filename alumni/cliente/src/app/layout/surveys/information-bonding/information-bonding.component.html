@@ -1,0 +1,393 @@
+<section>
+  <ng-container *ngFor="let encuesta of encuestaArray; let i = index; last as lasted; first as firsted">
+    <div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 mx-auto">
+          <ng-container *ngFor="let encuestaPreguntaArray of encuestaPreguntas; let indice = index;">
+            <div class="card" *ngIf="verificar(indice)">
+              <div class="card-body text-center" *ngIf="validador == false">
+                <div class="colorBar col-lg-12"
+                     style="color: rgb(0, 0, 0);background-color: white; border-bottom: 9px solid gray;">
+                  <h2> INFORMACIÓN COMPLEMENTARIA</h2>
+                  <br>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color:  #004523; color: rgb(255, 255, 255);height: 30%;border: 1px solid  #000000;">
+                  <br>
+                  <h5>¿Qué carreras y/o programas de posgrado considera usted, se deberían crear en la
+                    Universidad para impulsar el desarrollo local y nacional? (Mencione mínimo una opción
+                    por carrera y una por programa)</h5>
+                  <br>
+                </div>
+                <br>
+                <div class="container offset-3"style="padding-top: 10px">
+                <ng-container *ngFor="let item of preguntas">
+
+                  <div class="row" >
+                    <div class=" col-sm-6 col-md-6 col-xs-6"
+                         *ngIf="item.id == 58 ">
+                      <label class="control-label">Carreras:</label>
+                      <br>
+
+                      <input [(ngModel)]="carrera1" placeholder="CARRERA 1" maxlength="50"
+                             style="text-transform:uppercase;"
+                             (change)="id1 = item.id">
+                    </div>
+                    <div class=" col-sm-6 col-md-6 col-xs-6 " *ngIf="item.id == 61">
+                      <label>Programa Posgrados:</label>
+                      <br>
+                      <input [(ngModel)]="programa1" placeholder="PROGRAMA 1" maxlength="50"
+                             style="text-transform:uppercase;" (change)="id2 = item.id">
+                    </div>
+                  </div>
+
+                  <div class="row ">
+                    <div class=" col-sm-6 col-md-6 col-xs-6" *ngIf="item.id == 59">
+                      <br>
+                      <input [(ngModel)]="carrera2" placeholder="CARRERA 2" maxlength="9"
+                             style="text-transform:uppercase;" (change)="id3 = item.id">
+                    </div>
+                    <div class=" col-sm-6 col-md-6 col-xs-6" *ngIf="item.id == 62">
+                      <br>
+                      <input [(ngModel)]="programa2" placeholder="PROGRAMA 2" maxlength="10"
+                             style="text-transform:uppercase;" (change)="id4 = item.id">
+                    </div>
+                  </div>
+
+                  <div class="row ">
+                    <div class=" col-sm-6 col-md-6 col-xs-6" *ngIf="item.id == 60">
+                      <br>
+                      <input [(ngModel)]="carrera3" id="pl" placeholder="CARRERA 3" maxlength="9"
+                             style="text-transform:uppercase;" (change)="id5 = item.id">
+                    </div>
+                    <div class=" col-sm-6 col-md-6 col-xs-6" *ngIf="item.id == 63">
+                      <br>
+                      <input [(ngModel)]="programa3" id="phone" placeholder="PROGRAMA 3" maxlength="10"
+                             style="text-transform:uppercase;" (change)="id6 = item.id">
+                    </div>
+</div>
+                </ng-container>
+
+                </div>
+                <br>
+
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 32">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <!--<h5>¿Usted se encuentra actualmente trabajando?</h5>-->
+                  <br>
+                </div>
+                <ng-container *ngFor="let item of preguntas">
+                  <div class="col-md-6 offset-md-3" *ngIf="item.id == 64"><br>
+                    <label class="control-label"><br>Seleccione</label>
+                    <select class="form-control" id="select1" name="select1" [(ngModel)]="select1"
+                            (change)="id7 = item.id"
+                            style="text-transform:uppercase;">
+                      <option>-- Seleccione --</option>
+                      <option value="REFERENCIA/AMIGOS/FAMILIARES/CONOCIDOS">Referencias de amigos / familiares /
+                        conocidos.
+                      </option>
+                      <option value="REFRENCIA/PROFESORES">Referencias de profesores</option>
+                      <option value="CHARLAS">Charlas informativas de la Universidad en su colegio</option>
+                      <option value="FERIAS">Ferias de índole educativo</option>
+                      <option value="PAGINA/WEB">Página Web de la Universidad</option>
+                      <option value="REDES/SOCIALES">Redes Sociales</option>
+                      <option value="PUBLICIDAD">Publicidad por mailing</option>
+                      <option value="RADIO">Radio</option>
+                      <option value="PRESA">Prensa (periódicos, revistas, afiches)</option>
+                      <option value="TELEVISION">Televisión</option>
+                      <option value="OTRO">Otro</option>
+                    </select>
+                    <div *ngIf="select1 == 'OTRO' && item.id == 64">
+                      <div class="form-row">
+                        <div class="col">
+                          <label for="exampleFormControlTextarea1">Describa cual</label>
+                          <textarea [(ngModel)]="responseOtro" class="form-control" id="exampleFormControlTextarea1"
+                                    rows="3"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <br>
+                <!-- fin del div -->
+                <!-- ------------------------- -->
+                <div class="colorBar col-lg-12"
+                     style="color: rgb(0, 0, 0);background-color: white; border-bottom: 9px solid gray;">
+                  <h2>VINCULACIÓN CON LA UNIVERSIDAD</h2>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color:  #004523; color: rgb(255, 255, 255);height: 30%;border: 1px solid  #000000;">
+                  <br>
+
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 66">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <!--<h5>¿Le interesaría participar en actividades académicas (Proyectos, talleres, exposiciones
+                    y/o mesas de trabajo) para apoyo y retroalimentación a la Universidad?</h5>-->
+                  <br>
+                </div>
+                <ng-container *ngFor="let item of preguntas">
+                  <div class="col-md-6 offset-md-3" *ngIf="item.id == 66"><br>
+                    <label class="control-label"><br>Seleccione</label>
+                    <select class="form-control" style="text-transform:uppercase;" [(ngModel)]="select2"
+                            (change)="id9 = item.id">
+                      <option>-- Seleccione --</option>
+                      <option value="SI">Sí</option>
+                      <option value="NO">No</option>
+                    </select>
+                  </div>
+                </ng-container>
+                <!-- ------------------------- -->
+                <br><br>
+                <div class="row justify-content-around">
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    <a [routerLink]="['/web/employ']" class="btn btn-block btn-success">REGRESAR</a>
+                  </div>
+                  <br>
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    <!--(click)="guardarData()" (click)="actualizarData()"-->
+                    <a  (click)="guardarData()" class="btn btn-block btn-success">FINALIZAR</a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body text-center" *ngIf="validador == true">
+                <div class="colorBar col-lg-12"
+                     style="color: rgb(0, 0, 0);background-color: white; border-bottom: 9px solid gray;">
+                  <h2> INFORMACIÓN COMPLEMENTARIA</h2>
+                  <br>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color:  #004523; color: rgb(255, 255, 255);height: 30%;border: 1px solid  #000000;">
+                  <br>
+                  <h5>¿Qué carreras y/o programas de posgrado considera usted, se deberían crear en la
+                    Universidad para impulsar el desarrollo local y nacional.? (Mencione mínimo una opción
+                    por carrera y una por programa)</h5>
+                  <br>
+                </div>
+                <br>
+                <ng-container *ngFor="let item of encuestaPreguntas">
+                  <div class="row newrow1" *ngIf="item.respuesta != null">
+                    <div class="fech col-sm-6 col-md-6 col-xs-6"
+                         *ngIf="item.preguntas.id == 58 ">
+                      <label class="control-label">Carreras:</label>
+                      <br>
+                      <input *ngIf="!ocularCarrera1" (click)="ocularCarrera1=true"
+                             [(ngModel)]="item.respuesta.respuesta" placeholder="CARRERA 1"
+                             maxlength="50"
+                             style="text-transform:uppercase;"
+                             (change)="id1 = item.respuesta.id">
+
+                      <input *ngIf="ocularCarrera1" autofocus [(ngModel)]="carrera1" placeholder="CARRERA 1"
+                             maxlength="50"
+                             style="text-transform:uppercase;"
+                             (change)="id1 = item.respuesta.id">
+                    </div>
+                    <div class="fech col-sm-6 col-md-6 col-xs-6" *ngIf="item.preguntas.id == 61">
+                      <label>Programa Posgrados:</label>
+                      <br>
+                      <input *ngIf="!ocularCarrera2" (click)="ocularCarrera2=true"
+                             [(ngModel)]="item.respuesta.respuesta"
+                             placeholder="PROGRAMA 1" maxlength="50"
+                             style="text-transform:uppercase;">
+                      <input *ngIf="ocularCarrera2" autofocus [(ngModel)]="programa1" placeholder="PROGRAMA 1"
+                             maxlength="50"
+                             style="text-transform:uppercase;" (change)="id2 = item.respuesta.id">
+                    </div>
+                  </div>
+                  <div class="row newrow1" *ngIf="item.respuesta != null">
+                    <div class="fech col-sm-6 col-md-6 col-xs-6" *ngIf="item.preguntas.id == 59">
+                      <label></label>
+                      <br>
+                      <input *ngIf="!ocularCarrera3" (click)="ocularCarrera3=true"
+                             [(ngModel)]="item.respuesta.respuesta"
+                             placeholder="CARRERA 2" maxlength="50"
+                             style="text-transform:uppercase;">
+                      <input *ngIf="ocularCarrera3" [(ngModel)]="carrera2" placeholder="CARRERA 2"
+                             maxlength="50"
+                             style="text-transform:uppercase;" (change)="id3 = item.respuesta.id">
+                    </div>
+                    <div class="fech col-sm-6 col-md-6 col-xs-6" *ngIf="item.preguntas.id == 62">
+                      <label></label>
+                      <br>
+                      <input *ngIf="!ocularCarrera4" (click)="ocularCarrera4=true"
+                             [(ngModel)]="item.respuesta.respuesta"
+                             placeholder="PROGRAMA 2" maxlength="50"
+                             style="text-transform:uppercase;">
+                      <input *ngIf="ocularCarrera4" [(ngModel)]="programa2" placeholder="PROGRAMA 2"
+                             maxlength="50"
+                             style="text-transform:uppercase;" (change)="id4 = item.respuesta.id">
+
+                    </div>
+                  </div>
+                  <div class="row newrow1" *ngIf="item.respuesta != null">
+                    <div class="fech col-sm-6 col-md-6 col-xs-6" *ngIf="item.preguntas.id == 60">
+                      <label></label>
+                      <br>
+                      <input *ngIf="!ocularCarrera5" (click)="ocularCarrera5=true"
+                             [(ngModel)]="item.respuesta.respuesta"
+                             placeholder="CARRERA 3" maxlength="50"
+                             style="text-transform:uppercase;">
+                      <input *ngIf="ocularCarrera5" [(ngModel)]="carrera3" placeholder="CARRERA 3"
+                             maxlength="50"
+                             style="text-transform:uppercase;" (change)="id5 = item.respuesta.id">
+                    </div>
+                    <div class="fech col-sm-6 col-md-6 col-xs-6" *ngIf="item.preguntas.id == 63">
+                      <label></label>
+                      <br>
+                      <input *ngIf="!ocularCarrera6" (click)="ocularCarrera6=true"
+                             [(ngModel)]="item.respuesta.respuesta"
+                             placeholder="PROGRAMA 3" maxlength="10"
+                             style="text-transform:uppercase;">
+                      <input *ngIf="ocularCarrera6" [(ngModel)]="programa3" placeholder="PROGRAMA 3"
+                             maxlength="50"
+                             style="text-transform:uppercase;" (change)="id6 = item.respuesta.id">
+                    </div>
+                  </div>
+                </ng-container>
+                <br>
+
+                <div class="colorBar col-lg-12"
+                     style="background-color: #004523; color: rgb(255, 255, 255);border: 1px solid  #000000;">
+                  <br>
+
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 32">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <!--<h5>¿Usted se encuentra actualmente trabajando?</h5>-->
+                  <br>
+                </div>
+                <ng-container *ngFor="let item of encuestaPreguntas">
+                  <div class="prueba col-md-6 offset-md-3" *ngIf="item.preguntas.id == 64 && item.respuesta != null">
+                    <br>
+                    <label class="control-label"><br>Seleccione</label>
+                    <select id="para" *ngIf="!ocularCarrera7"
+                            (click)="ocularCarrera7=true; respuestaOtro = ''"
+                            class="respuestaOtro  form-control"
+                            name="respuestaOtro"
+                            [(ngModel)]="item.respuesta.respuesta"
+                            style="text-transform:uppercase;">
+                      <option>-- Seleccione --</option>
+                      <option value="REFERENCIA/AMIGOS/FAMILIARES/CONOCIDOS">Referencias de amigos / familiares /
+                        conocidos.
+                      </option>
+                      <option value="REFRENCIA/PROFESORES">Referencias de profesores</option>
+                      <option value="CHARLAS">Charlas informativas de la Universidad en su colegio</option>
+                      <option value="FERIAS">Ferias de índole educativo</option>
+                      <option value="PAGINA/WEB">Página Web de la Universidad</option>
+                      <option value="REDES/SOCIALES">Redes Sociales</option>
+                      <option value="PUBLICIDAD">Publicidad por mailing</option>
+                      <option value="RADIO">Radio</option>
+                      <option value="PRESA">Prensa (periódicos, revistas, afiches)</option>
+                      <option value="TELEVISION">Televisión</option>
+                      <option value="OTRO">Otro</option>
+                    </select>
+                    <select *ngIf="ocularCarrera7" class="form-control" name="select1"
+                            [(ngModel)]="select1"
+                            (change)="id7 = item.respuesta.id; respuestaOtro = select1"
+                            style="text-transform:uppercase;">
+                      <option>-- Seleccione --</option>
+                      <option value="REFERENCIA/AMIGOS/FAMILIARES/CONOCIDOS">Referencias de amigos / familiares /
+                        conocidos.
+                      </option>
+                      <option value="REFRENCIA/PROFESORES">Referencias de profesores</option>
+                      <option value="CHARLAS">Charlas informativas de la Universidad en su colegio</option>
+                      <option value="FERIAS">Ferias de índole educativo</option>
+                      <option value="PAGINA/WEB">Página Web de la Universidad</option>
+                      <option value="REDES/SOCIALES">Redes Sociales</option>
+                      <option value="PUBLICIDAD">Publicidad por mailing</option>
+                      <option value="RADIO">Radio</option>
+                      <option value="PRESA">Prensa (periódicos, revistas, afiches)</option>
+                      <option value="TELEVISION">Televisión</option>
+                      <option value="OTRO">Otro</option>
+                    </select>
+                  </div>
+                </ng-container>
+                <ng-container *ngFor="let item of encuestaPreguntas">
+                  <div *ngIf="item.preguntas.id == 65 && respuestaOtro == 'OTRO' && item.respuesta != null">
+                    <div class="form-row">
+                      <div class="col">
+                        <label for="exampleFormControlTextarea1">Describa cual</label>
+                        <textarea *ngIf="!ocularCarrera8" (click)="ocularCarrera8=true"
+                                  [(ngModel)]="item.respuesta.respuesta"
+                                  class="form-control" rows="3"></textarea>
+                        <textarea *ngIf="ocularCarrera8" [(ngModel)]="responseOtro" class="form-control" rows="3"
+                                  (change)="id8 = item.respuesta.id"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+                <br>
+                <br>
+                <!-- fin del div -->
+                <!-- ------------------------- -->
+                <div class="colorBar col-lg-12"
+                     style="color: rgb(0, 0, 0);background-color: white; border-bottom: 9px solid gray;">
+                  <h2>VINCULACIÓN CON LA UNIVERSIDAD</h2>
+                </div>
+                <br>
+                <div class="colorBar col-lg-12"
+                     style="background-color:  #004523; color: rgb(255, 255, 255);height: 30%;border: 1px solid  #000000;">
+                  <br>
+
+                  <ng-container *ngFor="let item of preguntas">
+                    <ng-container *ngIf="item.id == 66">
+                      <h5>{{item.descripcion}}</h5>
+                    </ng-container>
+                  </ng-container>
+                  <!--<h5>¿Le interesaría participar en actividades académicas (Proyectos, talleres, exposiciones
+                    y/o mesas de trabajo) para apoyo y retroalimentación a la Universidad?</h5>-->
+                  <br>
+                </div>
+                <ng-container *ngFor="let item of encuestaPreguntas">
+                  <div class="col-md-6 offset-md-3" *ngIf="item.preguntas.id == 66 && item.respuesta != null"><br>
+                    <label class="control-label"><br>Seleccione</label>
+                    <select *ngIf="!ocularCarrera9" (click)="ocularCarrera9=true" class="form-control"
+                            style="text-transform:uppercase;"
+                            [(ngModel)]="item.respuesta.respuesta">
+                      <option>-- Seleccione --</option>
+                      <option value="SI">Sí</option>
+                      <option value="NO">No</option>
+                    </select>
+                    <select *ngIf="ocularCarrera9" class="form-control" style="text-transform:uppercase;"
+                            [(ngModel)]="select2"
+                            (change)="id9 = item.respuesta.id">
+                      <option>-- Seleccione --</option>
+                      <option value="SI">Sí</option>
+                      <option value="NO">No</option>
+                    </select>
+                  </div>
+                </ng-container>
+                <!-- ------------------------- -->
+                <br><br>
+                <div class="row justify-content-around">
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    <a [routerLink]="['/web/employ']" class="btn btn-block btn-success">REGRESAR</a>
+                  </div>
+                  <br>
+                  <div class="col-sm-4 col-md-4 col-lg-4">
+                    <a (click)="actualizarData()" class="btn btn-block btn-success">FINALIZAR</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <br><br>
+
+  </ng-container>
+</section>
+

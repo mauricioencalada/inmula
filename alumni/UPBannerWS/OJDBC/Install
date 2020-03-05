@@ -1,0 +1,4 @@
+mvn install:install-file -Dfile=/home/shady/Descargas/espe/ojdbc7.jar  -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.1 -Dpackaging=jar
+
+
+mvn install:install-file -Dfile=C:\Users\HP\Desktop\AlumniEspe\alumni\UPBannerWS\OJDBC\ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.1 -Dpackaging=jar

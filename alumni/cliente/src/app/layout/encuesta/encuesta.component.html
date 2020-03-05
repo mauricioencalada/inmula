@@ -1,0 +1,65 @@
+<section>
+  <br><br><br>
+  <div class="card">
+    <div class="card-body text-center">
+      <div class="row">
+        <div class="col-12">
+          <ng-container>
+            <p-table [value]="encuesta">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th colspan="12">CAPACITACION GENERICA</th>
+                </tr>
+                <tr>
+                  <th colspan="8">Listado de Preguntas</th>
+                  <th colspan="2">Logro alcanzado</th>
+                  <th colspan="2">Nivel importancia</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-encuesta>
+                <tr>
+                  <td colspan="8">{{encuesta.preguntas.descripcion}}</td>
+                  <ng-container>
+                    <td colspan="2">
+                      <select [(ngModel)]="encuesta.respuesta"
+                              (change)=" validar(encuesta.respuesta,encuesta.preguntas.id, 'LOGRO ALCANZADO') ">
+                        <option selected>-- Seleccione --</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </td>
+                    <td colspan="2">
+                      <select [(ngModel)]="encuesta.estado"
+                              (change)=" validar(encuesta.estado,encuesta.preguntas.id, 'NIVEL IMPORTANCIA') ">
+                        <option selected>-- Seleccione --</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                      </select>
+                    </td>
+                  </ng-container>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="footer">
+              </ng-template>
+            </p-table>
+          </ng-container>
+          <br><br>
+          <div class="col-sm-4 col-md-4 col-lg-4 offset-sm-4 offset-md-4 offset-lg-4">
+            <a (click)="guardar()" class="btn btn-block btn-success">SIGUIENTE</a>
+            <br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
+<br>

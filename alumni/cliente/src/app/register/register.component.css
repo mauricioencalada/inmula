@@ -1,0 +1,122 @@
+.container{
+  padding-top: 5%;
+
+}
+@media only screen and (max-width: 1024px){
+  .container{
+    padding-top: 10%;
+
+  }
+  form{
+    border: 10px;
+  }
+}
+.cont{
+  background-color: rgb(209, 209, 209);
+  padding: 10% 90% 5% 90%;
+  border-radius: 10px;
+  border-color: black;
+  padding-left:10%;
+  padding-right: 10%;
+}
+.projects-section{
+  background-color: rgb(235, 235, 235);
+}
+.begin{
+  padding-top: 5%;
+  padding: 5%;
+}
+form{
+  border: 2px solid black;
+  border-radius: 20px;
+  border-top-right-radius: 1px;
+  border-top-left-radius: 1px;
+  align-items: center;
+  padding: 5%;
+  padding-left: 10%;
+  background-color: white;
+
+}
+.dat{
+  padding: 5%;
+}
+input{
+  width: 55%;
+  border:transparent 5px ;
+  border-bottom-radius: 20px;
+  border-bottom: 5px solid  rgb(00,69, 35);
+  background-color: transparent;
+  text-align: center;
+}
+section{
+  align-items: center;
+  padding: 5%;
+  padding-top: 1%;
+}
+@media only screen and (max-width: 560px){
+  h2 {
+    font-size: 130% ;
+  }
+}
+
+textarea{
+  border-bottom: 5px solid  rgb(00,69, 35);
+}
+span{
+  padding-top: 10%;
+  background-color: blue;
+}
+@media (max-width: 360px) {
+
+  .fech{
+    padding-top: 20%
+  }
+}
+.colorBar{
+  background-color: darkgreen;
+}
+.newrow{
+  align-items: center;
+  align-content: center;
+  text-align: center;
+
+}
+.newrow1{
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  padding-top: 5%;
+}
+.newrow2{
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  padding-left: 10%;
+}
+
+@media (max-width: 360px) {
+  input{
+    width: 90%;
+  }
+  select{
+    width: 90%;
+    align-items: start;
+  }
+  .texta{
+    width: 67%;
+    padding-right: 40%;
+  }
+  .newrow1{
+    padding-top: 5%;
+  }
+  table{
+    font-size: 10px;
+  }
+  table .dropdown-toggle{
+    width: 70%;
+    font-size: 10px;
+  }
+}
+textarea{
+  height: 50%;width: 100%;
+}

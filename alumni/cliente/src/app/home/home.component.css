@@ -1,0 +1,93 @@
+.prueba{
+    border-width: 10px;
+    border-color: rgba(255, 255, 255, 0.63);
+    text-decoration: none;
+
+}
+
+.containerben{
+    height: 100px;
+    background-color: rgb(00,69, 35);
+    color: white;
+}
+h4{
+text-align: center;
+}
+
+.img-fluid{
+    -webkit-filter: brightness(60%);
+    filter: brightness(60%);
+    
+}
+
+.card:hover  {
+    height: auto;
+    visibility: visible;
+    opacity: 10;
+    text-decoration: none;
+}
+
+.prueba:hover h4 {
+   
+   
+    color: rgb(255, 255, 255);
+
+    transition: all .5s ease-in-out ;   
+    
+    font-size:  30px;
+    
+}
+.prueba:hover p {
+    filter: brightness(100%);
+    transition: all .5s ease-in-out ; 
+    color: rgb(255, 255, 255);
+    visibility: visible;
+    font-size: 18px;
+}
+
+.prueba:hover {
+   
+    filter: brightness(75%) opacity(90%);
+    transition: all .1s ease-in-out ;   
+    visibility: visible;
+    
+}
+
+@media only screen and (min-width: 768px){
+.img1{height: 800px;
+}
+.img2{height: 390px;
+}
+.img2{height: 390px;
+}
+.img2{height: 390px;
+}
+.img2{height: 390px;
+}
+.img2{height: 390px;
+}
+.img2{height: 390px;
+}
+}
+.text{
+    color: rgb(255, 255, 255);
+    font-family:  'Arial Narrow', Arial, sans-serif;
+    text-align: center ;
+    visibility: hidden;
+    
+}
+h4{
+color:rgb(255, 255, 255);
+font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+.display-4{
+color:rgb(255, 255, 255);
+font-family: 'castellar', sans-serif;
+}
+
+.lead{
+color: antiquewhite;
+font-family:  'Arial Narrow', Arial, sans-serif;
+text-align: center ;
+}

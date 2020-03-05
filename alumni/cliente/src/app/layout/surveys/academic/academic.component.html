@@ -1,0 +1,221 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 mx-auto">
+
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="colorBar col-lg-12"
+                 style="color: rgb(0, 0, 0);background-color: white; border-bottom: 9px solid gray;font-size: 100%  ">
+              <h2>INFORMACIÓN ACADÉMICA</h2>
+              <br>
+            </div>
+            <br>
+            <div class="colorBar col-lg-12"
+                 style="background-color: #004523; color: rgb(255, 255, 255);height: 25%;border: 1px solid  #000000;">
+              <br>
+              <h5>Señale: ¿Qué título profesional o grado académico obtuvo usted, en la
+                Universidad de Fuerzas Armadas - ESPE? (Más de 1 opción es posible)</h5>
+              <br>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-12">
+                <p-table [value]="titulosObtenidos" [responsive]="true">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th colspan="5">Carreras con Título</th>
+                      <th colspan="5">Campus</th>
+                      <th colspan="2">Año de Graduación</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-titulosObtenidos>
+                    <tr>
+                      <td colspan="5">{{titulosObtenidos.carrera}}</td>
+                      <td colspan="5">{{titulosObtenidos.campus}}</td>
+                      <td colspan="2">{{titulosObtenidos.anio}}</td>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="footer">
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
+            <br><br>
+            <div *ngFor="let pregunta of encuesta">
+              <div class="row"
+                   *ngIf="pregunta.preguntas.descripcion == '¿Usted posee algún título de posgrado obtenido en otra Universidad?'&& pregunta.administrador == 'EDITABLE'">
+                <div class="col-7" style="text-align: center">
+                  <label>{{pregunta.preguntas.descripcion}}</label>
+                </div>
+                <div class="col-3">
+                  <select class="form-control" id="poseeTitulo"
+                          [(ngModel)]="poseeTitulo" (change)="idPregunta = pregunta.preguntas.id ">
+                    <option value="0" selected>-- Seleccione --</option>
+                    <option value="SI">Si</option>
+                    <option value="NO" selected>No</option>
+                  </select>
+                </div>
+                <br>
+              </div>
+              <div *ngIf="poseeTitulo == 'SI'">
+                <div class="row"
+                     *ngIf="pregunta.preguntas.descripcion == 'Nombre del posgrado que cursó:'&& pregunta.administrador == 'EDITABLE'">
+                  <div class="col-4">
+                    <label>{{pregunta.preguntas.descripcion}}</label>
+                  </div>
+                  <div class="col-sm-6 col-md-6 col-xs-6">
+                    <input id="nombrePos"  [(ngModel)]="nombrePos">
+                  </div>
+                </div>
+                <div class="row"
+                     *ngIf="pregunta.preguntas.descripcion == 'Universidad donde Estudio:'&& pregunta.administrador == 'EDITABLE'">
+                  <div class="col-4">
+                    <label>{{pregunta.preguntas.descripcion}}</label>
+                  </div>
+                  <div class="col-sm-6 col-md-6 col-xs-6">
+                    <input id="universidad"  [(ngModel)]="universidad">
+                  </div>
+                  <br>
+                </div>
+                <div class="row"
+                     *ngIf="pregunta.preguntas.descripcion == 'País donde estudió:' && pregunta.administrador == 'EDITABLE'">
+                  <br>
+                  <div class="col-4">
+                    <label>{{pregunta.preguntas.descripcion}}</label>
+                  </div>
+                  <div class=" col-sm-6 col-md-6 col-xs-6">
+                    <input id="paisE"  [(ngModel)]="paisEstudio">
+                  </div>
+                </div>
+
+
+                <div class="row"
+                     *ngIf="pregunta.preguntas.descripcion == 'País donde estudió:' && pregunta.administrador == 'EDITABLE'">
+                  <div class="col-12">
+                    <br>
+                    <div>
+                      <div class="col-sm-4 col-md-4 col-lg-4 offset-lg-8 offset-lg-8 offset-md-8">
+                        <a class="btn btn-block btn-primary"
+                           (click)="guardar(poseeTitulo,nombrePos,universidad,paisEstudio)">Agregar</a>
+                      </div>
+                    </div>
+                    <p-table [value]="tableResponse1" [responsive]="true">
+                      <ng-template pTemplate="header">
+                        <tr>
+                          <th colspan="5">Nombre del posgrado que cursó</th>
+                          <th colspan="5">Universidad donde estudio</th>
+                          <th colspan="2">Pais donde estudio</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-tablaResponse1>
+                        <tr>
+                          <td colspan="5">{{tablaResponse1.nombrePos}}</td>
+                          <td colspan="4">{{tablaResponse1.universidad}}</td>
+                          <td colspan="3">{{tablaResponse1.pais}}</td>
+                        </tr>
+                      </ng-template>
+
+                    </p-table>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <br>
+            <div *ngFor="let pregunta of encuesta">
+              <div class="row"
+                   *ngIf="pregunta.preguntas.descripcion == 'Dentro de su proyección profesional y laboral, ¿ha considerado realizar o iniciar otro tipo de formación académica a la ya obtenida?' && pregunta.administrador == 'EDITABLE'">
+                <div class="col-7" style="text-align: center">
+                  <label>{{pregunta.preguntas.descripcion}}</label>
+                </div>
+                <div class="col-3">
+                  <select class="form-control" id="typeStu" [(ngModel)]="nuevaFormacion"
+                          (change)="idPregunta1 = pregunta.preguntas.id ">
+                    <option value="0" selected>-- Seleccione --</option>
+                    <option value="SI">Si</option>
+                    <option value="NO" selected>No</option>
+                  </select>
+                </div>
+                <br>
+              </div>
+              <div *ngIf="nuevaFormacion == 'SI'">
+                <div class="row"
+                     *ngIf="pregunta.preguntas.descripcion == 'Tipo de formacion academica' && pregunta.administrador == 'EDITABLE'">
+                  <div class="col-4">
+                    <label>{{pregunta.preguntas.descripcion}}</label>
+                  </div>
+                  <div class="fech col-sm-6 col-md-6 col-xs-6">
+                    <input  [(ngModel)]="tipoFormacion">
+                  </div>
+                </div>
+                <div class="row"
+                     *ngIf="pregunta.preguntas.descripcion == 'Tipo de universidad'&& pregunta.administrador == 'EDITABLE'">
+                  <div class="col-4">
+                    <label>{{pregunta.preguntas.descripcion}}</label>
+                  </div>
+                  <div class="fech col-sm-6 col-md-6 col-xs-6">
+                    <input  [(ngModel)]="tipoUni">
+                  </div>
+                </div>
+                <div class="row"
+                     *ngIf="pregunta.preguntas.descripcion == 'Nombre de la universidad'&& pregunta.administrador == 'EDITABLE'">
+                  <div class="col-4">
+                    <label>{{pregunta.preguntas.descripcion}}</label>
+                  </div>
+                  <div class="fech col-sm-6 col-md-6 col-xs-6">
+                    <input  [(ngModel)]="nombreUni">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div *ngIf="nuevaFormacion == 'SI'">
+              <div class="col-sm-4 col-md-4 col-lg-4 offset-lg-8 offset-lg-8 offset-md-8">
+                <a class="btn btn-block btn-primary" (click)="guardar2(nuevaFormacion,tipoFormacion,tipoUni,nombreUni)">Agregar</a>
+              </div>
+            </div>
+            <br>
+
+            <div class="row" *ngIf="nuevaFormacion == 'SI'">
+              <div class="col-12">
+                <p-table [value]="tableResponse2" [responsive]="true">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th colspan="5">Carreras con Titulo</th>
+                      <th colspan="5">Campus</th>
+                      <th colspan="2">Año de Graduación</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-tablaResponse2>
+                    <tr>
+                      <td colspan="5">{{tablaResponse2.tipoFormacion}}</td>
+                      <td colspan="5">{{tablaResponse2.tipoUni}}</td>
+                      <td colspan="2">{{tablaResponse2.nombreUni}}</td>
+
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="footer">
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
+            <br>
+            <div class="row justify-content-around">
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                <a [routerLink]="['/web/surveys']" class="btn btn-block btn-success">REGRESAR</a>
+              </div>
+              <br>
+              <div class="col-sm-4 col-md-4 col-lg-4">
+                <a [routerLink]="['/web/employ']" class="btn btn-block btn-success">SIGUIENTE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+

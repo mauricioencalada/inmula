@@ -1,0 +1,245 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 mx-auto">
+
+        <div class="card">
+          <div class="card-body text-center">
+            <div class="cont col-12"
+                 style="text-align: justify;background-color: #ebebeb; border-bottom: 5px solid  #004523;">
+              <h6>TÚ sigues siendo ESPE. Actualiza y registra tus datos, conoce tus beneficios
+                y contribuye con la Excelencia Académica de tu Universidad.</h6>
+            </div>
+            <br>
+
+            <div class="colorBar col-lg-12"
+                 style="color: rgb(255,255,255);background-color: #004523; border-bottom: 9px solid #004523;font-size: 100%  ">
+              <br>
+              <h2>Datos Personales</h2>
+              <br>
+            </div>
+
+            <br>
+            <br>
+            <div class="row">
+              <div class="col-sm-6 col-md-6 col-xs-6">
+                <label>Cédula</label>
+                <br>
+                <input id="cedula" [(ngModel)]="id" disabled>
+              </div>
+
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Fecha de Nacimiento</label>
+                <br>
+                <input id="Birth" [(ngModel)]="personaBanner.fecha_NACIMIENTO" disabled>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Nombres*</label>
+                <br>
+                <input id="name" type="text" [(ngModel)]="personaBanner.nombre" placeholder="SIMÓN"
+                       style="text-transform:uppercase;">
+              </div>
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Apellidos*</label>
+                <br>
+                <input id="surname" [(ngModel)]="personaBanner.apellido" placeholder="BOLIVAR"
+                       style="text-transform:uppercase;">
+              </div>
+            </div>
+            <br>
+            <br>
+            <div class="row newrow">
+              <div class="form-group col-sm-4 col-lg-4">
+                <!--Gender-->
+                <label for="gender" class="control-label">Género:</label>
+                <select class="form-control" id="gender" [(ngModel)]="personaBanner.genero"
+                        style="text-transform:uppercase;">
+                  <option value="S">-- Seleccione --</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
+                  <option value="O">Otro</option>
+                </select>
+              </div>
+              <!--TypeStudents-->
+              <div class="form-group col-sm-4 col-lg-4">
+                <label for="typeStu" class="control-label">Tipo Estudiante:</label>
+                <select [(ngModel)]="personaBanner.tipo_ESTUDIANTE" class="form-control" id="typeStu"
+                        style="text-transform:uppercase;">
+                  <option value="0">-- Seleccione --</option>
+                  <option value="CIVIL">Civil</option>
+                  <option value="MILITAR">Militar</option>
+                </select>
+              </div>
+
+              <div class="form-group col-lg-4 col-sm-4 justify-content-center">
+                <!--CivilState-->
+                <label for="civilS" class="control-label">Estado Civil:</label>
+                <select class="form-control" id="civilS" style="text-transform:uppercase;">
+                  <option *ngFor="let item of ecivil" value="{{item.codigo}}"> {{item.descripcion}} </option>
+                </select>
+              </div>
+            </div>
+            <br>
+            <!--title-->
+            <div class="colorBar col-lg-12" style="color: white;border: 1px solid  #000000;">
+              <br>
+              <h2>Lugar de Residencia:</h2>
+              <br>
+            </div>
+            <div class="row newrow1 justify-content-start">
+              <div class="form-group fech col-sm-3 col-md-3 col-xs-3">
+                <label for="civilS" class="control-label">País:</label>
+
+                <select class="form-control" id="country" [(ngModel)]="personaBanner.cod_pais">
+                  <option selected style="text-transform:uppercase;">-- Seleccione --</option>
+                  <option *ngFor="let pais of paises" value="{{pais.codigo}}">{{pais.descripcion}}</option>
+                </select>
+              </div>
+              <ng-container *ngIf="personaBanner.cod_pais == '45'">
+                <div class=" form-group fech col-sm-3 col-md-3 col-xs-3 ">
+                  <label class="control-label">Provincia:</label>
+                  <select class="form-control" id="provin" [(ngModel)]="personaBanner.cod_prov"
+                          (click)="obtenerDomicilio()" style="text-transform:uppercase;">
+                    <option value="0" selected>-- Seleccione --</option>
+                    <option *ngFor="let provincia of provincias" value="{{provincia.codigo}}">{{provincia.descripcion}}
+                    </option>
+                  </select>
+                </div>
+                <div class=" form-group fech col-sm-3 col-md-3 col-xs-3">
+                  <label class="control-label">Cantón</label>
+                  <select class="form-control" id="city" [(ngModel)]="personaBanner.cod_can"
+                          (click)="obtenerDomicilio()" style="text-transform:uppercase;">
+                    <option value="0" selected>-- Seleccione --</option>
+                    <option *ngFor="let canton of cantones" value="{{canton.codigo}}">{{canton.descripcion}}</option>
+                  </select>
+                </div>
+                <div class="fech col-sm-3 col-md-3 col-xs-3"
+                     *ngIf="personaBanner.cod_can != 2501 && personaBanner.cod_prov != 90">
+                  <label class="control-label">Parroquia</label>
+                  <select class="form-control" id="par" [(ngModel)]="personaBanner.parroquia"
+                          style="text-transform:uppercase;">
+                    <option value="0" selected>-- Seleccione --</option>
+                    <option *ngFor="let parro of parroquias" value="{{parro.nombre}}">{{parro.nombre}}</option>
+                  </select>
+                </div>
+              </ng-container>
+
+            </div>
+            <div class="row newrow1">
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Calle Principal*</label>
+                <br>
+                <input id="pl" maxlength="9" [(ngModel)]="personaBanner.calle_PRINCIPAL"
+                       style="text-transform:uppercase;">
+              </div>
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Calle Secundaria*</label>
+                <br>
+                <input id="phone" maxlength="10" [(ngModel)]="personaBanner.calle_SECUNDARIA"
+                       style="text-transform:uppercase;">
+              </div>
+            </div>
+            <div class="row newrow1">
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Barrio*</label>
+                <br>
+                <input id="pl" [(ngModel)]="personaBanner.barrio" maxlength="9" style="text-transform:uppercase;">
+              </div>
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Número de Casa*</label>
+                <br>
+                <input id="phone" [(ngModel)]="personaBanner.num_DOMICILIO" maxlength="10"
+                       style="text-transform:uppercase;">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <label for="exampleFormControlTextarea1">Referencia</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                          [(ngModel)]="personaBanner.referencia" style="text-transform:uppercase;"></textarea>
+              </div>
+            </div>
+            <br>
+            <!--MIDDLE-->
+            <div class="colorBar col-lg-12" style="color: white; border: 1px solid  #000000;">
+              <br>
+              <h2>Datos de Contacto:</h2>
+              <br>
+            </div>
+            <div class="row newrow1">
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Teléfono Fijo*</label>
+                <br>
+                <input id="pl" placeholder="022*******" maxlength="9" [(ngModel)]="personaBanner.convencional">
+              </div>
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Teléfono Celular*</label>
+                <br>
+                <input id="phone" placeholder="099*******" maxlength="10" [(ngModel)]="personaBanner.celular">
+              </div>
+            </div>
+            <div class="row newrow1">
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Email Personal*</label>
+                <br>
+                <input type="email" id="Fj" placeholder="*******@*******.com"
+                       [(ngModel)]="personaBanner.correo_PERSONAL" style="text-transform:lowercase;">
+              </div>
+              <div class="fech col-sm-6 col-md-6 col-xs-6">
+                <label>Email Intitucional</label>
+                <br>
+                <input type="email" id="email" placeholder="*******@espe.edu.ec"
+                       [(ngModel)]="personaBanner.correo_INSTITUCIONAL" disabled style="text-transform:lowercase;">
+              </div>
+            </div>
+            <br>
+            <!--END FORM-->
+            <!-- <div class="colorBar col-lg-12" style="color: white;border: 1px solid  #000000;">
+               <br>
+               <h2>¿Tiene discapacidad?</h2>
+               <br>
+             </div>
+             <div class="row newrow1">
+               <div class="col-md-6 offset-md-3">
+                 <label for="civilS" class="control-label">¿Posee Discapacidad?</label>
+                 <select class="form-control" id="ds" [(ngModel)]="personaBanner.posee_DISCAPACIDAD" style="text-transform:uppercase;">
+                   <option value="0">-- Seleccione --</option>
+                   <option value="S">Si</option>
+                   <option value="N">No</option>
+                 </select>
+               </div>
+             </div>
+             <br>
+             <div class="row justify-content-center col-12" *ngIf="personaBanner.posee_DISCAPACIDAD == 'S'">
+                 <div class="col-6">
+               <label>Tipo de discapacidad</label>
+               <select class="fech form-control" id="tps" style="text-transform:uppercase;">
+                 <option value="0">-- Seleccione --</option>
+                 <option value="1">Si</option>
+                 <option value="2">No</option>
+               </select>
+             </div>
+               <br>
+               <div class=" fech col-6">
+                 <label>Porcentaje</label>
+                 <br>
+                 <input id="percents" placeholder="0 - 100%">
+               </div>
+             </div>
+             <br>
+             <br>
+ -->
+            <!--Bottom-->
+            <div class="col-sm-4 col-md-4 col-lg-4 offset-sm-4 offset-md-4 offset-lg-4">
+              <a [routerLink]="['/web/academic']" class="btn btn-block btn-success">SIGUIENTE</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
